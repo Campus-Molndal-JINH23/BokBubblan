@@ -83,38 +83,38 @@
 
 <script>
     // Simulerad data för böcker
-    var books = [
+    const books = [
         {"id":1,"name":"Bok 1","description":"Ett bokexempel","price":129.99,"category":"Deckare"},
         {"id":2,"name":"Bok 2","description":"Ett annat bokexempel","price":19.99,"category":"Självbiografi"}
     ];
 
     // Hämta elementet där böckerna ska visas
-    var booksContainer = document.getElementById('books');
+    const booksContainer = document.getElementById('books');
 
     // Loopa igenom varje bok och skapa HTML för att visa dem
     books.forEach(function(book) {
-        var bookElement = document.createElement('div');
+        const bookElement = document.createElement('div');
         bookElement.classList.add('book');
 
-        var imageElement = document.createElement('img');
+        const imageElement = document.createElement('img');
         imageElement.src = 'book-placeholder.jpg'; // Du kan ersätta detta med den faktiska bildkällan
 
-        var bookInfoElement = document.createElement('div');
+        const bookInfoElement = document.createElement('div');
         bookInfoElement.classList.add('book-info');
 
-        var nameElement = document.createElement('div');
+        const nameElement = document.createElement('div');
         nameElement.classList.add('book-name');
         nameElement.textContent = book.name;
 
-        var descriptionElement = document.createElement('div');
+        const descriptionElement = document.createElement('div');
         descriptionElement.classList.add('book-description');
         descriptionElement.textContent = book.description;
 
-        var priceElement = document.createElement('div');
+        const priceElement = document.createElement('div');
         priceElement.classList.add('book-price');
         priceElement.textContent = 'Pris: ' + book.price + ' kr';
 
-        var categoryElement = document.createElement('div');
+        const categoryElement = document.createElement('div');
         categoryElement.classList.add('book-category');
         categoryElement.textContent = 'Kategori: ' + book.category;
 
