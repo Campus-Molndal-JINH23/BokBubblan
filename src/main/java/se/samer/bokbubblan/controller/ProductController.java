@@ -15,8 +15,8 @@ public class ProductController {
     private static Map<Long, Product> productMap = new HashMap<>();
 
     static {
-        productMap.put(1L, new Product(1L, "Bok 1", "Ett bokexempel", 49.00));
-        productMap.put(2L, new Product(2L, "Bok 2", "Ett annat bokexempel", 19.99));
+        productMap.put(1L, new Product(1L, "Bok 1", "Ett bokexempel", 129.99, "Deckare"));
+        productMap.put(2L, new Product(2L, "Bok 2", "Ett annat bokexempel", 19.99, "Självbiografi"));
         // Lägg till fler exempelprodukter här
     }
 

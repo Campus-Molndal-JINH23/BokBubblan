@@ -4,16 +4,27 @@ public class Product {
     private Long id;
     private String name;
     private String description;
+    private double price;
+    private String category; // Tillagd attribut
 
     // Konstruktor
-    public Product(Long id, String name, String description, double price) {
+    public Product(Long id, String name, String description, double price, String category) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
+        this.category = category;
     }
 
-    // Getters & setters
+    // Getters och setters
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
     public Long getId() {
         return id;
     }
@@ -45,6 +56,4 @@ public class Product {
     public void setPrice(double price) {
         this.price = price;
     }
-
-    private double price;
 }

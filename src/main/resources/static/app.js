@@ -3,9 +3,32 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(response => response.json())
         .then(products => {
             const productList = document.getElementById('product-list');
+            productList.innerHTML = ''; // Clear existing content
             products.forEach(product => {
                 const productElement = document.createElement('div');
-                productElement.innerHTML = `<h3>${product.name}</h3><p>${product.description}</p><p>Price: ${product.price}</p>`;
+                productElement.classList.add('product');
+
+                const productDetails = document.createElement('div');
+                productDetails.classList.add('product-details');
+
+                const productName = document.createElement('h3');
+                productName.textContent = product.name;
+
+                const productDescription = document.createElement('p');
+                productDescription.textContent = product.description;
+
+                const productPrice = document.createElement('p');
+                productPrice.textContent = `Price: ${product.price}`;
+
+                const productCategory = document.createElement('p');
+                productCategory.textContent = `Category: ${product.category}`;
+
+                productDetails.appendChild(productName);
+                productDetails.appendChild(productDescription);
+                productDetails.appendChild(productPrice);
+                productDetails.appendChild(productCategory);
+
+                productElement.appendChild(productDetails);
                 productList.appendChild(productElement);
             });
         })
