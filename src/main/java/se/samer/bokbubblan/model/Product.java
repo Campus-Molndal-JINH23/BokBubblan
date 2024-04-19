@@ -6,19 +6,29 @@ import lombok.Setter;
 @Setter
 @Getter
 public class Product {
-    private Long id;
-    private String name;
+    private String id;
+    private String title;
+    private int year;
+    private String author;
     private String description;
+    private String category;
+    private String itemNumber;
     private double price;
     // Getters och setters
-    private String category; // Tillagd attribut
+
 
     // Konstruktor
-    public Product(Long id, String name, String description, double price, String category) {
+    public Product(String id, String name, String description, double price, String category) {
         this.id = id;
-        this.name = name;
-        this.description = description;
-        this.price = price;
+        this.title = title;
+        this.author = author;
+        this.year = year;
         this.category = category;
+        this.description = description;
+        this.itemNumber = itemNumber;
+        this.price = price;
+    }
+    //konstruktor för att kunna använda objekt utan att behöva specificera alla attribut
+    public Product() {
     }
 }

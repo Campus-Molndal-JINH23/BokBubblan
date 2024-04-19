@@ -9,7 +9,7 @@ public class ProductSearch {
 
     public List<Product> searchByName(List<Product> products, String keyword) {
         return products.stream()
-                .filter(product -> product.getName().toLowerCase().contains(keyword.toLowerCase()))
+                .filter(product -> product.getTitle().toLowerCase().contains(keyword.toLowerCase()))
                 .collect(Collectors.toList());
     }
 }

@@ -28,9 +28,10 @@ public class ProductController {
 
     // Visa en specifik produkt baserat på ID
     @GetMapping("/products/{id}")
-    public Product getProductById(@PathVariable Long id) {
+    public Product getProductById(@PathVariable String id) {
         return productRepository.findById(id).orElse(null);
     }
+
 
     // Lägg till en ny produkt
     @PostMapping("/products")
@@ -40,14 +41,15 @@ public class ProductController {
 
     // Uppdatera en befintlig produkt
     @PutMapping("/products/{id}")
-    public Product updateProduct(@PathVariable Long id, @RequestBody Product updatedProduct) {
+    public Product updateProduct(@PathVariable String id, @RequestBody Product updatedProduct) {
         updatedProduct.setId(id);
         return productRepository.save(updatedProduct);
     }
 
     // Ta bort en produkt
     @DeleteMapping("/products/{id}")
-    public void deleteProduct(@PathVariable Long id) {
+    public void deleteProduct(@PathVariable String id) {
         productRepository.deleteById(id);
     }
+
 }

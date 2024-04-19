@@ -30,7 +30,7 @@ public class ProductFilter {
     // Metod för att filtrera produkter baserat på ett sökord i produktnamnet
     public List<Product> filterByName(List<Product> products, String keyword) {
         return products.stream()
-                .filter(product -> product.getName().toLowerCase().contains(keyword.toLowerCase())) // Filtrera produkter med produktnamn som innehåller det angivna sökordet (case insensitive)
+                .filter(product -> product.getTitle().toLowerCase().contains(keyword.toLowerCase())) // Filtrera produkter med produktnamn som innehåller det angivna sökordet (case insensitive)
                 .collect(Collectors.toList()); // Samla de filtrerade produkterna i en lista och returnera den
     }
 }
