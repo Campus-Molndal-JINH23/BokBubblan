@@ -86,5 +86,26 @@
 <footer>
     <p>© 2024 BokBubblan AB</p>
 </footer>
+
+<!-- Inkludera JavaScript-koden -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        fetch('/products')
+            .then(response => response.json())
+            .then(products => {
+                const productList = document.getElementById('product-list');
+                productList.innerHTML = ''; // Rensa befintligt innehåll
+                products.forEach(product => {
+                    const productElement = document.createElement('div');
+                    productElement.classList.add('product');
+
+                    // Skapa och lägg till övriga element för att visa produktens information
+
+                    productList.appendChild(productElement);
+                });
+            })
+            .catch(error => console.error('Error fetching products:', error));
+    });
+</script>
 </body>
 </html>

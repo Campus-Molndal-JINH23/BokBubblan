@@ -34,7 +34,7 @@ main {
 
 /* Sektion för bild (HEROSEKTION) */
 .hero {
-    background-image: url('"C:\Users\lenov\Pictures\books.jpg"'); /* Måste spara bilden i samma ställe på datorn där css filen är sparad */
+    background-image: url('books.jpg'); /* Ändra sökvägen till din bild */
     background-size: cover;
     background-position: center;
     color: #000; /* Texten är svart */
@@ -47,7 +47,7 @@ main {
     margin-bottom: 20px;
 }
 
-/* Produktista */
+/* Produktlista */
 .product-list {
     margin-top: 20px;
 }
