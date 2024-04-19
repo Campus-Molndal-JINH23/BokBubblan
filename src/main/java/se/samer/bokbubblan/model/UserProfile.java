@@ -8,6 +8,7 @@ public class UserProfile {
     private String password;
     private boolean acceptedTerms;
 
+    // Konstruktor
     public UserProfile(String username, String email, String password, boolean acceptedTerms) {
         this.username = username;
         this.email = email;
@@ -15,6 +16,7 @@ public class UserProfile {
         this.acceptedTerms = acceptedTerms;
     }
 
+    // Getter och setters
     public Long getId() {
         return id;
     }

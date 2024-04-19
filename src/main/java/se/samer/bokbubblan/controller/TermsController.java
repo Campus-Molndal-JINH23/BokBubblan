@@ -8,6 +8,6 @@ public class TermsController {
 
     @GetMapping("/terms")
     public String termsPage() {
-        return "terms"; // Returnera namnet på sidan för användarvillkoren (t.ex. terms.html)
+        return "terms";
     }
 }
