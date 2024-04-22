@@ -1,78 +1,22 @@
-/* Återställning av standardstilar */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    font-family: Arial;
+    color: red;
+}
+.logo {
+    color: red;
+width: 80%;
 }
 
-/* Globala stilar */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+.cover {
+width: 50%;
+    padding-top: 100px;
+    color: red;
 }
 
-header, footer {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
+.light-text {
+color: red;
 }
 
-header nav a, footer p {
-    color: #fff;
-    text-decoration: none;
-}
-
-main {
-    padding: 20px;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-/* Sektion för bild (HEROSEKTION) */
-.hero {
-    background-image: url('books.jpg'); /* Ändra sökvägen till din bild */
-    background-size: cover;
-    background-position: center;
-    color: #000; /* Texten är svart */
-    padding: 100px 0;
-    text-align: center;
-}
-
-.hero h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
-}
-
-/* Produktlista */
-.product-list {
-    margin-top: 20px;
-}
-
-/* Produktkort */
-.product {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 20px;
-    margin-bottom: 20px;
-}
-
-.product h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.product p {
-    margin-bottom: 10px;
-}
-
-/* Tillbaka-länk */
-.back-link {
-    display: block;
-    text-align: center;
-    margin-top: 20px;
-    color: #333;
+section, footer {
+    padding-left: 200px;
 }

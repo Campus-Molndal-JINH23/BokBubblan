@@ -1,11 +1,17 @@
 package se.samer.bokbubblan.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Setter
-@Getter
+@Document
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Product {
+    @Id
     private String id;
     private String title;
     private int year;
@@ -14,21 +20,4 @@ public class Product {
     private String category;
     private String itemNumber;
     private double price;
-    // Getters och setters
-
-
-    // Konstruktor
-    public Product(String id, String name, String description, double price, String category) {
-        this.id = id;
-        this.title = title;
-        this.author = author;
-        this.year = year;
-        this.category = category;
-        this.description = description;
-        this.itemNumber = itemNumber;
-        this.price = price;
-    }
-    //konstruktor för att kunna använda objekt utan att behöva specificera alla attribut
-    public Product() {
-    }
 }

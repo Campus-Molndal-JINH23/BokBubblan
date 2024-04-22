@@ -1,5 +1,6 @@
 package se.samer.bokbubblan.controller;
 
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import se.samer.bokbubblan.model.Product;
@@ -10,15 +11,16 @@ import se.samer.bokbubblan.repository.ProductRepository;
 import java.util.List;
 
 
-@RestController
+@Component
 public class ProductController {
 
-    private final ProductRepository productRepository;
+    private ProductRepository productRepository = null;
 
     @Autowired
     public ProductController(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
+
 
     // Visa alla produkter
     @GetMapping("/products")
