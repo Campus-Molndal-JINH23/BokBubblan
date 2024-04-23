@@ -11,10 +11,11 @@ import java.util.Optional;
 
 @Service
 public class ProductService {
+    @Autowired
     private ProductRepository productRepository;
 
     // Constructor injection: Dependency injection av ProductRepository vid skapande av ProductService
-    @Autowired
+
     public ProductService(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
@@ -23,7 +24,10 @@ public class ProductService {
 
     }
 
-
+    public List<Product> getAllProducts() {
+        return productRepository.findAll();
+    }
+/*
     public List<Product> getAllProducts() {
         // Create a temporary hardcoded list of Product objects
         return Arrays.asList(
@@ -31,6 +35,8 @@ public class ProductService {
                 new Product("2", "Another Book", 2021, "Another Author", "Another Description", "Another Category", "002", 19.99)
         );
     }
+
+ */
 
 
 /*
