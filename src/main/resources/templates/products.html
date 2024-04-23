@@ -9,6 +9,7 @@
 <body>
 <div class="container">
     <h1>Product Catalog</h1>
+    <div th:text="${#lists.size(products)}"></div>
     <div th:each="product : ${products}" class="product">
         <h2 th:text="${product.title}">Product Title</h2>
         <p><strong>Author:</strong> <span th:text="${product.author}">Author Name</span></p>

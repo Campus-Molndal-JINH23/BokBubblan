@@ -1,57 +1,35 @@
 package se.samer.bokbubblan.controller;
 
-import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import se.samer.bokbubblan.model.Product;
-import se.samer.bokbubblan.repository.ProductRepository;
-
-
+import se.samer.bokbubblan.service.ProductService;
 
 import java.util.List;
 
-
-@Component
+@Controller
 public class ProductController {
-
-    private ProductRepository productRepository = null;
+    private final ProductService productService;
 
     @Autowired
-    public ProductController(ProductRepository productRepository) {
-        this.productRepository = productRepository;
+    public ProductController(ProductService productService) {
+        this.productService = productService;
     }
 
-
-    // Visa alla produkter
     @GetMapping("/products")
-    public List<Product> getAllProducts() {
-        return productRepository.findAll();
+    public String listProducts(Model model) {
+        model.addAttribute("products", productService.getAllProducts());
+        return "products"; // Namnet på din Thymeleaf mall
     }
 
-    // Visa en specifik produkt baserat på ID
-    @GetMapping("/products/{id}")
-    public Product getProductById(@PathVariable String id) {
-        return productRepository.findById(id).orElse(null);
-    }
+///////////////
 
 
-    // Lägg till en ny produkt
-    @PostMapping("/products")
-    public Product addProduct(@RequestBody Product product) {
-        return productRepository.save(product);
-    }
-
-    // Uppdatera en befintlig produkt
-    @PutMapping("/products/{id}")
-    public Product updateProduct(@PathVariable String id, @RequestBody Product updatedProduct) {
-        updatedProduct.setId(id);
-        return productRepository.save(updatedProduct);
-    }
-
-    // Ta bort en produkt
-    @DeleteMapping("/products/{id}")
-    public void deleteProduct(@PathVariable String id) {
-        productRepository.deleteById(id);
-    }
 
 }
