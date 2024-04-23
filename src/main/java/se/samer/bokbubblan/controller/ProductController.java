@@ -24,8 +24,10 @@ public class ProductController {
 
     @GetMapping("/products")
     public String listProducts(Model model) {
-        model.addAttribute("products", productService.getAllProducts());
-        return "products"; // Namnet på din Thymeleaf mall
+        List<Product> products = productService.getAllProducts();
+        System.out.println("Number of products fetched: " + products.size());
+        model.addAttribute("products", products);
+        return "products"; // Ensure this matches your Thymeleaf template file name
     }
 
 ///////////////
