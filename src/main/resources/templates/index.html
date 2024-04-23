@@ -1,29 +1,32 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Välkommen till BokBubblan AB!</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="/styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Välkommen!</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
 </head>
 <body>
-<header>
-    <nav>
-        <ul>
-            <li><a href="/">Hem</a></li>
-            <li><a href="/products">Produkter</a></li>
-            <li><a href="/contact">Kontakt</a></li>
-        </ul>
-    </nav>
-</header>
+<div class="container">
+    <header class="header">
+        <h1>Välkommen till BokBubblan!</h1>
+        <nav>
+            <ul class="nav-list">
+                <li><a href="/products">Våra Böcker</a></li>
+                <li><a href="/login">Logga in</a></li>
+                <li><a href="/register">Registrera</a></li>
+                <li><a href="/terms">Villkor</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<section>
-    <h2>Learnspringboot</h2>
-    <a href="https://sergiolema.dev/the-spring-boot-academy">Läs mer på The Spring Boot Academy</a>
-    <img class="cover" src="image.jpg" alt="Spring Boot Academy Cover Image">
-</section>
-<footer>
-    <p class="light-text">Sergio Lema</p>
-</footer>
+    <section class="intro">
+        <p>Välkommen till vår bokaffär! Här hittar du ett stort urval av böcker inom alla möjliga genrer. Utforska vårt sortiment och hitta din nästa läsupplevelse.</p>
+    </section>
+
+    <footer class="footer">
+        <p>© 2024 BokBubblan. Alla rättigheter förbehållna.</p>
+    </footer>
+</div>
 </body>
 </html>

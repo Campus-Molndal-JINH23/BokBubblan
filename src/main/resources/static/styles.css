@@ -1,22 +1,98 @@
-*{
-    font-family: Arial;
-    color: red;
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
 }
-.logo {
-    color: red;
-width: 80%;
+.container {
+    max-width: 750px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #007bff;
+}
+.book {
+    border-bottom: 1px solid #ddd;
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+}
+.book:last-child {
+    border-bottom: none;
+}
+.book img {
+    width: 100px;
+    height: auto;
+    margin-right: 20px;
+    border-radius: 5px;
+}
+.book-info {
+    flex-grow: 1;
+}
+.book-name {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+.book-description {
+    color: #666;
+    margin-bottom: 10px;
+}
+.book-price {
+    font-weight: bold;
+    color: #007bff;
+}
+.book-category {
+    font-style: italic;
+    color: #999;
 }
 
-.cover {
-width: 50%;
-    padding-top: 100px;
-    color: red;
+
+.container {
+    max-width: 750px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.light-text {
-color: red;
+.header h1 {
+    text-align: center;
+    color: #007bff;
 }
 
-section, footer {
-    padding-left: 200px;
+.nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.nav-list li a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.intro {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.footer {
+    margin-top: 20px;
+    text-align: center;
+    color: #666;
+    font-size: 0.9em;
 }

@@ -1,24 +1,23 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Våra böcker</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
 </head>
 <body>
-<h1>Våra Böcker</h1>
-<div>
-    <ul>
-        <li th:each="product : ${products}">
-            <h2 th:text="${product.title}">Book Title</h2>
-            <p><strong>Author:</strong> <span th:text="${product.author}">Author Name</span></p>
-            <p><strong>Year:</strong> <span th:text="${product.year}">Year</span></p>
-            <p><strong>Description:</strong> <span th:text="${product.description}">Description</span></p>
-            <p><strong>Category:</strong> <span th:text="${product.category}">Category</span></p>
-            <p><strong>Item Number:</strong> <span th:text="${product.itemNumber}">Item Number</span></p>
-            <p><strong>Price:</strong> <span th:text="${product.price}">Price</span> SEK</p>
-        </li>
-    </ul>
+<div class="container">
+    <h1>Product Catalog</h1>
+    <div th:each="product : ${products}" class="product">
+        <h2 th:text="${product.title}">Product Title</h2>
+        <p><strong>Author:</strong> <span th:text="${product.author}">Author Name</span></p>
+        <p><strong>Description:</strong> <span th:text="${product.description}">Product Description</span></p>
+        <p><strong>Year:</strong> <span th:text="${product.year}">Year of Publication</span></p>
+        <p><strong>Category:</strong> <span th:text="${product.category}">Category</span></p>
+        <p><strong>Item Number:</strong> <span th:text="${product.itemNumber}">12345</span></p>
+        <p><strong>Price:</strong> <span th:text="${product.price} + ' kr'">100 kr</span></p>
+    </div>
 </div>
 </body>
 </html>
