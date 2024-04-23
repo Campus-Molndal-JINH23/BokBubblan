@@ -1,134 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Våra böcker</title>
-    <link rel="stylesheet" type="text/css" href="../static/styles.css">
-    <style>
-        /* Importerade stilar från styles.css */
-        /* Lägg till ytterligare anpassade stilar för att förbättra utseendet */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            margin: 0;
-            padding: 0;
-        }
-
-        .container {
-            max-width: 750px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #007bff;
-        }
-
-        .book {
-            border-bottom: 1px solid #ddd;
-            padding: 20px 0;
-            display: flex;
-            align-items: center;
-        }
-
-        .book:last-child {
-            border-bottom: none;
-        }
-
-        .book img {
-            width: 100px;
-            height: auto;
-            margin-right: 20px;
-            border-radius: 5px;
-        }
-
-        .book-info {
-            flex-grow: 1;
-        }
-
-        .book-name {
-            font-size: 1.2em;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 5px;
-        }
-
-        .book-description {
-            color: #666;
-            margin-bottom: 10px;
-        }
-
-        .book-price {
-            font-weight: bold;
-            color: #007bff;
-        }
-
-        .book-category {
-            font-style: italic;
-            color: #999;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}" />
 </head>
 <body>
-<div class="container">
-    <h1>Våra böcker</h1>
-    <div id="books"></div>
+<h1>Våra Böcker</h1>
+<div>
+    <ul>
+        <li th:each="product : ${products}">
+            <h2 th:text="${product.title}">Book Title</h2>
+            <p><strong>Author:</strong> <span th:text="${product.author}">Author Name</span></p>
+            <p><strong>Year:</strong> <span th:text="${product.year}">Year</span></p>
+            <p><strong>Description:</strong> <span th:text="${product.description}">Description</span></p>
+            <p><strong>Category:</strong> <span th:text="${product.category}">Category</span></p>
+            <p><strong>Item Number:</strong> <span th:text="${product.itemNumber}">Item Number</span></p>
+            <p><strong>Price:</strong> <span th:text="${product.price}">Price</span> SEK</p>
+        </li>
+    </ul>
 </div>
-
-<script>
-    // Simulerad data för böcker
-    const books = [
-        {"id":1,"name":"Bok 1","description":"Ett bokexempel","price":129.99,"category":"Deckare"},
-        {"id":2,"name":"Bok 2","description":"Ett annat bokexempel","price":19.99,"category":"Självbiografi"}
-    ];
-
-    // Hämta elementet där böckerna ska visas
-    const booksContainer = document.getElementById('books');
-
-    // Loopa igenom varje bok och skapa HTML för att visa dem
-    books.forEach(function(book) {
-        const bookElement = document.createElement('div');
-        bookElement.classList.add('book');
-
-        const imageElement = document.createElement('img');
-        imageElement.src = 'book-placeholder.jpg'; // Du kan ersätta detta med den faktiska bildkällan
-
-        const bookInfoElement = document.createElement('div');
-        bookInfoElement.classList.add('book-info');
-
-        const nameElement = document.createElement('div');
-        nameElement.classList.add('book-name');
-        nameElement.textContent = book.name;
-
-        const descriptionElement = document.createElement('div');
-        descriptionElement.classList.add('book-description');
-        descriptionElement.textContent = book.description;
-
-        const priceElement = document.createElement('div');
-        priceElement.classList.add('book-price');
-        priceElement.textContent = 'Pris: ' + book.price + ' kr';
-
-        const categoryElement = document.createElement('div');
-        categoryElement.classList.add('book-category');
-        categoryElement.textContent = 'Kategori: ' + book.category;
-
-        bookInfoElement.appendChild(nameElement);
-        bookInfoElement.appendChild(descriptionElement);
-        bookInfoElement.appendChild(priceElement);
-        bookInfoElement.appendChild(categoryElement);
-
-        bookElement.appendChild(imageElement);
-        bookElement.appendChild(bookInfoElement);
-
-        booksContainer.appendChild(bookElement);
-    });
-</script>
-
 </body>
 </html>
