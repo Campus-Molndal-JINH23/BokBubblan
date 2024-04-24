@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lägg Till Recension</title>
+</head>
+<body>
+<h1>Lägg Till Recension</h1>
+<form action="/customers/{customerId}/reviews" method="post">
+    <label for="content">Recension:</label><br>
+    <textarea id="content" name="content" required></textarea><br>
+    <label for="rating">Betyg:</label>
+    <input type="number" id="rating" name="rating" min="1" max="5" required><br>
+    <button type="submit">Lägg Till Recension</button>
+</form>
+</body>
+</html>

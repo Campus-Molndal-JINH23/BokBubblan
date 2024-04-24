@@ -1,10 +1,13 @@
 package se.samer.bokbubblan.model;
 
-import se.samer.bokbubblan.model.Review;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Data
+@NoArgsConstructor
 public class CustomerProfile {
 
     private String name;
