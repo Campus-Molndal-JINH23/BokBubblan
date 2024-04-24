@@ -27,6 +27,11 @@ public class ProductService {
     public List<Product> getAllProducts() {
         return productRepository.findAll();
     }
+
+    //för KUNDVAGN
+    public Product getProductById(String productId) {
+        return productRepository.findById(productId).orElse(null);
+    }
 /*
     public List<Product> getAllProducts() {
         // Create a temporary hardcoded list of Product objects
