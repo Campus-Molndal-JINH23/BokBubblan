@@ -5,10 +5,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.SessionScope;
 import se.samer.bokbubblan.model.Cart;
 import se.samer.bokbubblan.model.Product;
-import se.samer.bokbubblan.repository.CartRepository;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 @SessionScope
