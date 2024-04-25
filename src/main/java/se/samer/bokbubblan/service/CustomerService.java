@@ -1,4 +1,4 @@
-package se.samer.bokbubblan.service;
+/*package se.samer.bokbubblan.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,4 +42,4 @@ public class CustomerService {
         customerProfile.addReview(review);
         customerProfileRepository.save(customerProfile);
     }
-}
+}*/

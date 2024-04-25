@@ -1,4 +1,4 @@
-package se.samer.bokbubblan.controller;
+/*package se.samer.bokbubblan.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -68,3 +68,4 @@ public class CustomerController {
         return "redirect:/customers/" + customerId + "/reviews";
     }
 }
+ */

@@ -1,4 +1,4 @@
-package se.samer.bokbubblan.model;
+/*package se.samer.bokbubblan.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,4 +28,4 @@ public class CustomerProfile {
     public void addReview(Review review) {
         reviews.add(review);
     }
-}
+}*/
