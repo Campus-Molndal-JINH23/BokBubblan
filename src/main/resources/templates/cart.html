@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kundvagn</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
+</head>
+<header class="header">
+    <h1>Välkommen till BokBubblan!</h1>
+    <nav>
+        <ul class="nav-list">
+            <li><a href="/products">Våra Böcker</a></li>
+            <li><a href="/login">Logga in</a></li>
+            <li><a href="/register">Registrera</a></li>
+            <li><a href="/terms">Villkor</a></li>
+            <li><a href="/cart">Kundvagn</a></li>
+        </ul>
+    </nav>
+</header>
+<body>
+<div class="container">
+    <h1>Din kundvagn</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Låna digitalt i 24h</th> <!-- Låna digitalt-rutan längst till vänster -->
+            <th>Produkt</th>
+            <th>Antal</th>
+            <th>Pris per bok</th>
+            <th>Totalt pris</th>
+            <th>Åtgärder</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Loopa igenom varje produkt i kundvagnen -->
+        <tr th:each="product : ${cart.products}">
+            <td>
+                <!-- Kryssruta för att välja låna digitalt -->
+                <input type="checkbox" name="loanDigital" th:id="'loanDigital_' + ${product.id}">
+            </td>
+            <td th:text="${product.title}">Produktnamn</td>
+            <td>
+                <!-- Låst fält för antal böcker -->
+                <input type="number" name="quantity" value="1" min="1" readonly>
+            </td>
+            <td th:text="${product.price}">Pris per bok</td>
+            <td th:text="${product.price}">Totalt pris</td>
+            <td>
+                <!-- Ta bort-knapp per vara -->
+                <form th:action="@{/cart/remove/{productId}(productId=${product.id})}" method="post">
+                    <button type="submit">Ta bort</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div>
+        <!-- Knapp för att tömma kundvagnen -->
+        <form th:action="@{/cart/clear}" method="post">
+            <button type="submit">Töm kundvagn</button>
+        </form>
+        <!-- Leveranskostnad -->
+        <p>Leveranskostnad: 75 kr</p>
+        <!-- Totalpris inkl. leverans -->
+        <p>Totalpris inkl. leverans: <span th:text="${totalPrice}"></span> kr</p>
+    </div>
+    <!-- Knapp för att låna digitalt i 24h -->
+    <button id="loanDigitalButton" onclick="loanDigital()">Låna digitalt i 24h</button>
+    <!-- Knapp för att gå till kassan -->
+    <form th:action="@{/checkout}" method="post">
+        <button type="submit">Till Kassan</button>
+    </form>
+</div>
+</body>
+</html>
