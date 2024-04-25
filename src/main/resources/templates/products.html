@@ -20,6 +20,9 @@
         <p><strong>Category:</strong> <span th:text="${product.category}">Category</span></p>
         <p><strong>Item Number:</strong> <span th:text="${product.itemNumber}">12345</span></p>
         <p><strong>Price:</strong> <span th:text="${product.price} + ' kr'">100 kr</span></p>
+        <form th:action="@{/cart/add/{productId}(productId=${product.id})}" method="post">
+            <button type="submit">Köp</button>
+        </form>
     </div>
 </div>
 </body>
