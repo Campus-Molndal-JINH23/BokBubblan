@@ -6,38 +6,52 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import se.samer.bokbubblan.model.UserProfile;
+import se.samer.bokbubblan.model.User;
 import se.samer.bokbubblan.service.AuthService;
+import se.samer.bokbubblan.service.UserService;
 
 @Controller
 public class AuthController {
-    private AuthService authService;
+    private final AuthService authService;
+    private final UserService userService;
 
     @Autowired
-    public AuthController(AuthService authService) {
+    public AuthController(AuthService authService, UserService userService) {
         this.authService = authService;
+        this.userService = userService;
     }
 
     @GetMapping("/login")
     public String loginPage() {
-        return "login"; // Returnerar namnet login-sida (login.html)
+        return "login"; // Returnerar namnet på inloggningssidan (login.html)
     }
+
+    @PostMapping("/login")
+    public String loginUser(@RequestParam String username, @RequestParam String password, Model model) {
+        boolean isAuthenticated = authService.authenticate(username, password);
+        model.addAttribute("username", username); // Lägg till användarnamnet i modellen för bekräftelse
+        return "login-success"; // Omdirigera till en sida som bekräftar inloggningen (login-success.html)
+    }
+
 
     @GetMapping("/register")
     public String registerPage() {
-        return "register"; // Returnerar namnet på registreringssida (register.html)
+        return "register"; // Returnerar namnet på registreringssidan (register.html)
     }
 
     @PostMapping("/register")
-    public String registerUser(@RequestParam String username, @RequestParam String email, @RequestParam String password, Model model) {
-        UserProfile userProfile = new UserProfile(username, email, password, true); // Skapa användarprofilen med acceptedTerms satt till true eftersom användaren är registrerad
-        authService.registerUser(userProfile); // Registrera användaren
-        model.addAttribute("username", username); // Lägg till användarnamnet i modellen för bekräftelse
-        return "registration-success"; // Omdirigera till en sida som bekräftar registreringen (registration-success.html)
+    public String registerUser(@RequestParam String username, @RequestParam String email, @RequestParam String password) {
+        User newUser = new User(); // Skapa en ny användare
+        newUser.setUsername(username); // Ange användarnamnet
+        newUser.setEmail(email); // Ange e-postadressen
+        newUser.setPassword(password); // Ange lösenordet
+        newUser.setEnabled(true);
+        userService.register(newUser); // Registrera användaren
+        return "redirect:/registration-success"; // Omdirigera till bekräftelsesidan efter att registreringen är klar
     }
 
     @GetMapping("/registration-success")
     public String registrationSuccessPage() {
-        return "registration-success"; // Returnerar namnet på sidan som bekräftar registreringen (registration-success.html)
+        return "registration-success"; // Returnera namnet på bekräftelsesidan
     }
 }

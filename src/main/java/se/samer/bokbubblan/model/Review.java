@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Getter
 @Setter
-@Document(collection = "Bokbubblan")
+@Document(collection = "Review")
 public class Review {
     @Id
     private String id;

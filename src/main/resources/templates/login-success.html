@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Success</title>
+    <title>Inloggningen lyckades!</title>
+    <!-- URL för ikoner -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
@@ -26,7 +27,7 @@
             text-align: center;
         }
 
-        .success-container h1 {
+        .success-container h2 {
             margin-top: 0;
             margin-bottom: 20px;
             color: #333;
@@ -58,8 +59,8 @@
 </head>
 <body>
 <div class="success-container">
-    <h1>Registreringen lyckades <i class="far fa-check-circle fa-icon"></i></h1>
-    <p>Tack för att du registrerade dig hos BokBubblan!</p>
+    <h2>Inloggningen lyckades <i class="far fa-smile fa-icon"></i></h2>
+    <p>Välkommen till BokBubblan! Du är nu inloggad, <span th:text="${username}"></span>!</p>
 
     <!-- Lägg till en länk till startsidan -->
     <a href="/">Tillbaka till startsidan <i class="fas fa-house fa-icon"></i></a>
