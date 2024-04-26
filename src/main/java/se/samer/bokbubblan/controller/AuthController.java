@@ -1,5 +1,6 @@
 package se.samer.bokbubblan.controller;
 
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,9 +30,14 @@ public class AuthController {
     @PostMapping("/login")
     public String loginUser(@RequestParam String username, @RequestParam String password, Model model) {
         boolean isAuthenticated = authService.authenticate(username, password);
-        model.addAttribute("username", username); // Lägg till användarnamnet i modellen för bekräftelse
-        return "login-success"; // Omdirigera till en sida som bekräftar inloggningen (login-success.html)
+        if (isAuthenticated) {
+            model.addAttribute("username", username);
+            return "home"; // Omdirigera till den nya inloggade startsidan
+        } else {
+            return "login-failure"; // Behåll detta om du vill visa en felmeddelandesida vid misslyckad inloggning
+        }
     }
+
 
 
     @GetMapping("/register")
@@ -53,5 +59,11 @@ public class AuthController {
     @GetMapping("/registration-success")
     public String registrationSuccessPage() {
         return "registration-success"; // Returnera namnet på bekräftelsesidan
+    }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate(); // Ogiltigförklara sessionen för att logga ut användaren
+        return "redirect:/"; // Omdirigera till startsidan
     }
 }

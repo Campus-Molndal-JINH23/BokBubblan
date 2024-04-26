@@ -46,6 +46,10 @@
             box-sizing: border-box;
         }
 
+        .register-container input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
         .register-container button[type="submit"] {
             width: 100%;
             padding: 10px;
@@ -62,6 +66,11 @@
             background-color: #0056b3;
         }
 
+        .register-container .terms-link {
+            text-decoration: none;
+            color: #007bff;
+        }
+
         .fa-icon {
             margin-left: 5px;
         }
@@ -75,9 +84,10 @@
         <input type="text" name="username" placeholder="Användarnamn" required>
         <input type="email" name="email" placeholder="E-postadress" required>
         <input type="password" name="password" placeholder="Lösenord" required>
+        <label><input type="checkbox" name="terms" required> Jag godkänner <a href="/terms" class="terms-link" target="_blank">användarvillkoren <i class="fas fa-handshake"></i></a></label>
         <!-- Övriga formulärfält -->
         <button type="submit">Registrera</button>
     </form>
 </div>
 </body>
-</html></html>
+</html>
