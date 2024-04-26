@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kassa</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Bootstrap Template CSS -->
+    <link rel="stylesheet" href="/css/custom-style.css">
+    <style>
+        h1 {
+            text-align: center;
+        }
+        h2 {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<a href="/">Gå till startsida</a>
+<h1>Kassa</h1>
+<h2>Översikt av kundkorg</h2>
+<div>
+    <h3>Produkter</h3>
+    <ul>
+        <!-- Loopa igenom varje produkt i kundvagnen -->
+        <li th:each="product : ${cart.products}">
+            <span th:text="${product.title}"></span> - <span th:text="${product.price}"></span> kr
+        </li>
+    </ul>
+</div>
+<div>
+    <h2>Dina uppgifter</h2>
+    <form id="checkoutForm" action="/checkout/order_confirmation" method="post" onsubmit="return validateForm()">
+
+        <label for="firstName">Förnamn:</label>
+        <input type="text" id="firstName" name="firstName" required><br>
+
+        <label for="lastName">Efternamn:</label>
+        <input type="text" id="lastName" name="lastName" required><br>
+
+        <label for="address">Adress:</label>
+        <input type="text" id="address" name="address" required><br>
+
+        <label for="email">E-postadress:</label>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="phone">Telefonnummer:</label>
+        <input type="tel" id="phone" name="phone" required><br>
+
+        <h3>Leverans</h3>
+        <p>Leverans via brev 2-3 arbetsdagar - 75kr</p> <!-- Istället för en checkbox -->
+
+        <h3>Betalningsalternativ</h3>
+        <input type="checkbox" id="card" name="payment" value="Betala med kort - 0 kr">
+        <label for="card">Betala med kort - 0 kr</label><br>
+        <input type="checkbox" id="swish" name="payment" value="Swish - 0 kr">
+        <label for="swish">Swish - 0 kr</label><br>
+        <input type="checkbox" id="klarna" name="payment" value="Klarna - 19kr">
+        <label for="klarna">Klarna - 19kr</label><br>
+
+        <p id="paymentError" style="color: red; display: none;">Välj endast ett betalningsalternativ.</p>
+
+        <p>Att betala:</p>
+        <p>Totalpris inkl. leverans och betalning: <span id="totalPrice"></span> kr</p>
+
+        <button type="submit">Slutför köp</button>
+    </form>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var totalPriceElement = document.getElementById('totalPrice');
+        var checkboxes = document.getElementsByName('payment');
+        var products = document.querySelectorAll('li');
+
+        // Beräkna totalpriset för produkterna i kundvagnen när sidan laddas
+        var totalProductPrice = 0;
+        products.forEach(function(product) {
+            var priceText = product.querySelector('span:nth-child(2)').innerText; // Hämta texten för produktpriset
+            var pricePerBook = parseFloat(priceText); // Konvertera texten till ett flyttal
+            totalProductPrice += pricePerBook;
+        });
+
+        // Uppdatera det totala priset inklusive produktpriset när sidan laddas
+        var totalPriceWithDeliveryAndPayment = totalProductPrice + 75; // Baspris för leverans
+        totalPriceElement.innerText = totalPriceWithDeliveryAndPayment;
+
+        // Lägg till eventlyssnare på varje checkbox för att uppdatera totalpriset
+        checkboxes.forEach(function(checkbox) {
+            checkbox.addEventListener('change', function() {
+                var totalPriceWithDeliveryAndPayment = totalProductPrice + 75; // Baspris för leverans
+                checkboxes.forEach(function(checkbox) {
+                    if (checkbox.checked) {
+                        var paymentInfo = checkbox.value.split(" - "); // Dela upp strängen för att få betalningsinformationen
+                        var paymentAmount = parseFloat(paymentInfo[1]); // Konvertera betalningsbeloppet till ett flyttal
+                        totalPriceWithDeliveryAndPayment += paymentAmount; // Lägg till betalningsbeloppet till totalpriset
+                    }
+                });
+                totalPriceElement.innerText = totalPriceWithDeliveryAndPayment; // Uppdatera totalpriset på sidan
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
