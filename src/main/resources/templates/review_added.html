@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tack för ditt bidrag!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -39,14 +40,23 @@
         a:hover {
             text-decoration: underline;
         }
+
+        /* Förstorar ikonerna */
+        .icon-large {
+            font-size: 3em; /* Här justeras storleken på ikonen */
+        }
     </style>
 </head>
 <body>
 <div class="container">
     <h1>Tack för din recension!</h1>
+    <!-- Smileyikonen -->
+    <i class="fa-regular fa-face-smile icon-large"></i>
+    <!-- Hjärtikonen -->
+    <i class="fa-regular fa-heart icon-large"></i>
     <p>Din recension har sparats. Tack för ditt bidrag!</p>
     <!-- Tillbakalänk till startsidan -->
-    <a href="/">Tillbaka till startsidan</a>
+    <a href="/">Tillbaka till startsidan<i class="fa-solid fa-house"></i></a>
 </div>
 </body>
 </html>
