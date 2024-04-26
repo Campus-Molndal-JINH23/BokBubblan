@@ -11,7 +11,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "Carts") //annan collektion som hör till vagnen
+@Document(collection = "Cart") //
 public class Cart {
     @Id
     private String id;
