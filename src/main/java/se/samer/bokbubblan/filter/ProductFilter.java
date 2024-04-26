@@ -1,6 +1,7 @@
 package se.samer.bokbubblan.filter;
 
 import se.samer.bokbubblan.model.Product;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;

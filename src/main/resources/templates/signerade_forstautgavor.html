@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Signerade Förstautgåvor</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
+</head>
+<body>
+<div class="container">
+    <h1>Signerade Förstautgåvor</h1>
+    <div th:each="product : ${products}" th:if="${product.category == 'Signerade förstautgåvor'}" class="product">
+        <h2 th:text="${product.title}">Product Title</h2>
+        <p><strong>Author:</strong> <span th:text="${product.author}">Author Name</span></p>
+        <p><strong>Description:</strong> <span th:text="${product.description}">Product Description</span></p>
+        <p><strong>Year:</strong> <span th:text="${product.year}">Year of Publication</span></p>
+        <p><strong>Item Number:</strong> <span th:text="${product.itemNumber}">12345</span></p>
+        <p><strong>Price:</strong> <span th:text="${product.price} + ' kr'">100 kr</span></p>
+        <form th:action="@{/cart/add/{productId}(productId=${product.id})}" method="post">
+            <button type="submit">Köp</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

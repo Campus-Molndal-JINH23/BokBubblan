@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import se.samer.bokbubblan.controller.ProductController;
+import se.samer.bokbubblan.filter.ProductFilter;
 import se.samer.bokbubblan.service.ProductService;
 
 @Configuration
@@ -32,5 +33,11 @@ public class AppConfig {
     public MongoTemplate mongoTemplate() {
         MongoClient mongoClient = MongoClients.create(mongoUri);
         return new MongoTemplate(mongoClient, "Bokbubblan"); // Adjust database name if necessary
+    }
+
+    // Bean för ProductFilter
+    @Bean
+    public ProductFilter productFilter() {
+        return new ProductFilter();
     }
 }

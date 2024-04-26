@@ -32,6 +32,11 @@ public class ProductService {
     public Product getProductById(String productId) {
         return productRepository.findById(productId).orElse(null);
     }
+
+    //hämta produkter baserat på kategori på produktsida
+    public List<Product> getProductsByCategory(String category) {
+        return productRepository.findByCategory(category);
+    }
 /*
     public List<Product> getAllProducts() {
         // Create a temporary hardcoded list of Product objects
