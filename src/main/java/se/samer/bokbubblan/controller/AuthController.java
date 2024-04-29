@@ -34,8 +34,11 @@ public class AuthController {
             model.addAttribute("username", username);
             return "home"; // Omdirigera till den nya inloggade startsidan
         } else {
-            return "login-failure"; // Behåll detta om du vill visa en felmeddelandesida vid misslyckad inloggning
+            // Authentication failed, add error message to model and return login page
+            model.addAttribute("error", true);
+            return "login"; // Return to login page with error message
         }
+
     }
 
 
