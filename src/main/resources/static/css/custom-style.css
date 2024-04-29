@@ -100,9 +100,9 @@ body {
 <<<<<<< HEAD
 
 =======
-    height: 200px; /* Fast höjd för bilderna */
+height: 200px; /* Fast höjd för bilderna */
 >>>>>>> 3d453ca07671ca93a72bf7ec403c9d67934a00d4
-    object-fit: cover; /* Ser till att bilder passar snyggt */
+object-fit: cover; /* Ser till att bilder passar snyggt */
 }
 
 /* Stil för knapparna på bok-kort */
@@ -180,4 +180,3 @@ footer a:hover {
 .custom-border {
     border: 2px solid #000; /* Example: a solid black border with a width of 2px */
 }
-
