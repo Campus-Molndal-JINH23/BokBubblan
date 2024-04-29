@@ -30,16 +30,16 @@ public class CheckoutControllerTest {
 
     @Test
     public void testShowCheckoutForm() {
-        // Arrange
+        //arrange
         Cart cart = new Cart();
         double totalPrice = 100.0;
         when(cartService.getCart()).thenReturn(cart);
         when(cartService.calculateTotalPrice()).thenReturn(totalPrice);
 
-        // Act
+        //act
         String viewName = checkoutController.showCheckoutForm(model);
 
-        // Assert
+        //assert
         assertEquals("checkout", viewName);
         verify(model).addAttribute("cart", cart);
         verify(model).addAttribute("totalPrice", totalPrice + 75); // Leveranskostnad 75kr tillagd
@@ -47,19 +47,19 @@ public class CheckoutControllerTest {
 
     @Test
     public void testHandleCheckout() {
-        // Act
+        //act
         String viewName = checkoutController.handleCheckout();
 
-        // Assert
+        //act & assert
         assertEquals("order_confirmation", viewName);
     }
 
     @Test
     public void testShowCheckoutConfirmationPage() {
-        // Act
+        //act
         String viewName = checkoutController.showCheckoutConfirmationPage();
 
-        // Assert
+        //assert
         assertEquals("order_confirmation", viewName);
     }
 }

@@ -9,13 +9,13 @@ public class HomeControllerTest {
 
     @Test
     public void testHome() {
-        // Arrange
+        //arrange
         HomeController homeController = new HomeController();
 
-        // Act
+        //act
         String viewName = homeController.home();
 
-        // Assert
+        //assert
         assertEquals("index", viewName);
     }
 }

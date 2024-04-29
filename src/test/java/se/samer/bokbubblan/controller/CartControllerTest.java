@@ -35,16 +35,16 @@ public class CartControllerTest {
 
     @Test
     public void testViewCart() {
-        // Arrange
+        //arrange
         Cart cart = new Cart();
         double totalPrice = 100.0;
         when(cartService.getCart()).thenReturn(cart);
         when(cartService.calculateTotalPrice()).thenReturn(totalPrice);
 
-        // Act
+        //act
         String viewName = cartController.viewCart(model);
 
-        // Assert
+        //assert
         assertEquals("cart", viewName);
         verify(model).addAttribute("cart", cart);
         verify(model).addAttribute("totalPrice", totalPrice);
@@ -52,34 +52,34 @@ public class CartControllerTest {
 
     @Test
     public void testAddToCart() {
-        // Arrange
+        //arrange
         String productId = "123";
         Product product = new Product();
         when(productService.getProductById(productId)).thenReturn(product);
 
-        // Act
+        //act
         String viewName = cartController.addToCart(productId);
 
-        // Assert
+        //assert
         assertEquals("redirect:/products", viewName);
         verify(cartService).addToCart(product);
     }
 
     @Test
     public void testRemoveFromCart() {
-        // Arrange
+        //arrange
         String productId = "123";
         Product product = new Product();
         when(productService.getProductById(productId)).thenReturn(product);
 
-        // Act
+        //act
         String viewName = cartController.removeFromCart(productId);
 
-        // Assert
+        //assert
         assertEquals("redirect:/cart", viewName);
         verify(cartService).removeFromCart(product);
     }
 
-    // Add more test methods for other controller methods similarly
+
 
 }
