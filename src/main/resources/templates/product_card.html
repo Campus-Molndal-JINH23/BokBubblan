@@ -21,7 +21,7 @@
     <p><strong>Pris:</strong> <span th:text="${product.price}"></span> kr</p>
     <!-- Knapp för att lägga till produkten i kundvagnen -->
     <form th:action="@{/cart/add/{productId}(productId=${product.id})}" method="post">
-        <button type="submit">Lägg till i kundvagnen</button>
+        <button type="submit">Köp</button>
     </form>
     <!-- Knapp för att låna produkten i 24H -->
     <form action="/loan_info" method="get">
