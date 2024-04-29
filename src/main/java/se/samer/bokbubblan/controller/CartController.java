@@ -32,23 +32,16 @@ public class CartController {
 
         return "cart"; //retur html sidan
     }
-
-
-
-    //visa kundvagn
-    /* @GetMapping
-    public String viewCart(Model model) {
-        Cart cart = cartService.getCart();
-        model.addAttribute("cart", cart);
-        return "cart"; //retur namn på html för att visa vagn
-    }  */
-
-    //lägg till
     @PostMapping("/add/{productId}")
-    public String addToCart(@PathVariable String productId) {
+    public String addToCart(@PathVariable("productId") String productId) {
         Product product = productService.getProductById(productId);
-        cartService.addToCart(product);
-        return "redirect:/products"; //hamna på produkterna efter man lagt till.
+        if (product != null) {
+            cartService.addToCart(product);
+        } else {
+            //produkt hittades inte
+            System.out.println("Produkten med ID " + productId + " hittades inte.");
+        }
+        return "redirect:/products"; //hamna på produktsidan efter att ha lagt till
     }
 
     //ta bort
@@ -73,5 +66,14 @@ public class CartController {
         cartService.clearCart();
         return "redirect:/cart"; //vara kvar i kundvagn efter du tömt
     }
+
+    //för produktkort
+    @GetMapping("/product/{productId}")
+    public String viewProduct(@PathVariable String productId, Model model) {
+        Product product = productService.getProductById(productId);
+        model.addAttribute("product", product);
+        return "product_card"; // Ersätt "product_card" med namnet på HTML-filen för produktdetaljer
+    }
+
 
 }
