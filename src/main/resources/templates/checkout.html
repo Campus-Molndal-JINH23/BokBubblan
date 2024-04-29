@@ -47,26 +47,28 @@
         <p>Leverans via brev 2-3 arbetsdagar - 75kr</p> <!-- Istället för en checkbox -->
 
         <h3>Betalningsalternativ</h3>
-        <input type="checkbox" id="card" name="payment" value="Betala med kort - 0 kr">
+        <input type="radio" id="card" name="payment" value="Betala med kort - 0 kr" required>
         <label for="card">Betala med kort - 0 kr</label><br>
-        <input type="checkbox" id="swish" name="payment" value="Swish - 0 kr">
+        <input type="radio" id="swish" name="payment" value="Swish - 0 kr" required>
         <label for="swish">Swish - 0 kr</label><br>
-        <input type="checkbox" id="klarna" name="payment" value="Klarna - 19kr">
+        <input type="radio" id="klarna" name="payment" value="Klarna - 19kr" required>
         <label for="klarna">Klarna - 19kr</label><br>
 
-        <p id="paymentError" style="color: red; display: none;">Välj endast ett betalningsalternativ.</p>
+        <p id="paymentError" style="color: red; display: none;">Välj ett betalningsalternativ.</p>
 
         <p>Att betala:</p>
         <p>Totalpris inkl. leverans och betalning: <span id="totalPrice"></span> kr</p>
 
-        <button type="submit">Slutför köp</button>
+        <button type="submit" id="checkoutButton" disabled>Slutför köp</button>
     </form>
 </div>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var totalPriceElement = document.getElementById('totalPrice');
-        var checkboxes = document.getElementsByName('payment');
+        var radioButtons = document.getElementsByName('payment');
         var products = document.querySelectorAll('li');
+        var checkoutButton = document.getElementById('checkoutButton');
+        var paymentError = document.getElementById('paymentError');
 
         // Beräkna totalpriset för produkterna i kundvagnen när sidan laddas
         var totalProductPrice = 0;
@@ -80,21 +82,40 @@
         var totalPriceWithDeliveryAndPayment = totalProductPrice + 75; // Baspris för leverans
         totalPriceElement.innerText = totalPriceWithDeliveryAndPayment;
 
-        // Lägg till eventlyssnare på varje checkbox för att uppdatera totalpriset
-        checkboxes.forEach(function(checkbox) {
-            checkbox.addEventListener('change', function() {
+        // Lägg till eventlyssnare på varje radioknapp för att uppdatera totalpriset
+        radioButtons.forEach(function(radioButton) {
+            radioButton.addEventListener('change', function() {
                 var totalPriceWithDeliveryAndPayment = totalProductPrice + 75; // Baspris för leverans
-                checkboxes.forEach(function(checkbox) {
-                    if (checkbox.checked) {
-                        var paymentInfo = checkbox.value.split(" - "); // Dela upp strängen för att få betalningsinformationen
+                radioButtons.forEach(function(radioButton) {
+                    if (radioButton.checked) {
+                        var paymentInfo = radioButton.value.split(" - "); // Dela upp strängen för att få betalningsinformationen
                         var paymentAmount = parseFloat(paymentInfo[1]); // Konvertera betalningsbeloppet till ett flyttal
                         totalPriceWithDeliveryAndPayment += paymentAmount; // Lägg till betalningsbeloppet till totalpriset
+                        checkoutButton.disabled = false; // Aktivera knappen för att slutföra köp när ett alternativ är valt
+                        paymentError.style.display = 'none'; // Dölj felmeddelandet om ett alternativ är valt
                     }
                 });
                 totalPriceElement.innerText = totalPriceWithDeliveryAndPayment; // Uppdatera totalpriset på sidan
             });
         });
     });
+
+    // Funktion för att validera formuläret innan det skickas
+    function validateForm() {
+        var radioButtons = document.getElementsByName('payment');
+        var selectedOption = false;
+        radioButtons.forEach(function(radioButton) {
+            if (radioButton.checked) {
+                selectedOption = true;
+            }
+        });
+        if (!selectedOption) {
+            var paymentError = document.getElementById('paymentError');
+            paymentError.style.display = 'block';
+            return false; //stoppa köpknapp om betalsätt ej valt
+        }
+        return true; //man ska kunna klicka om man valt ett betalsätt
+    }
 </script>
 
 </body>
