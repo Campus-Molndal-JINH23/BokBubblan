@@ -1,0 +1,66 @@
+[33m7b53bcf[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/feautre_productcard[m[33m, [m[1;31morigin/feautre_card[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{0}: checkout: moving from safeguard2 to master
+[33mc0849a8[m[33m ([m[1;32msafeguard2[m[33m)[m HEAD@{1}: reset: moving to HEAD
+[33mc0849a8[m[33m ([m[1;32msafeguard2[m[33m)[m HEAD@{2}: checkout: moving from testFrontend to safeguard2
+[33m25d82fc[m[33m ([m[1;31morigin/testFrontend[m[33m, [m[1;32mtestFrontend[m[33m)[m HEAD@{3}: checkout: moving from master to testFrontend
+[33m7b53bcf[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/feautre_productcard[m[33m, [m[1;31morigin/feautre_card[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{4}: checkout: moving from safeguard2 to master
+[33mc0849a8[m[33m ([m[1;32msafeguard2[m[33m)[m HEAD@{5}: checkout: moving from testFrontend to safeguard2
+[33m25d82fc[m[33m ([m[1;31morigin/testFrontend[m[33m, [m[1;32mtestFrontend[m[33m)[m HEAD@{6}: checkout: moving from master to testFrontend
+[33m7b53bcf[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/feautre_productcard[m[33m, [m[1;31morigin/feautre_card[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{7}: checkout: moving from testFrontend to master
+[33m25d82fc[m[33m ([m[1;31morigin/testFrontend[m[33m, [m[1;32mtestFrontend[m[33m)[m HEAD@{8}: checkout: moving from master to testFrontend
+[33m7b53bcf[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/feautre_productcard[m[33m, [m[1;31morigin/feautre_card[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{9}: checkout: moving from testFrontend to master
+[33m25d82fc[m[33m ([m[1;31morigin/testFrontend[m[33m, [m[1;32mtestFrontend[m[33m)[m HEAD@{10}: checkout: moving from master to testFrontend
+[33m7b53bcf[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/feautre_productcard[m[33m, [m[1;31morigin/feautre_card[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{11}: checkout: moving from testFrontend to master
+[33m25d82fc[m[33m ([m[1;31morigin/testFrontend[m[33m, [m[1;32mtestFrontend[m[33m)[m HEAD@{12}: commit: Frontend push
+[33m7b53bcf[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/feautre_productcard[m[33m, [m[1;31morigin/feautre_card[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{13}: checkout: moving from master to testFrontend
+[33mc0849a8[m[33m ([m[1;32msafeguard2[m[33m)[m HEAD@{14}: reset: moving to c0849a853c1a66e606e4f3a65b0fd4ecb98b52e7
+[33m15c83c5[m HEAD@{15}: commit: Frontend push
+[33mc0849a8[m[33m ([m[1;32msafeguard2[m[33m)[m HEAD@{16}: checkout: moving from testFrontend to master
+[33m7b53bcf[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/feautre_productcard[m[33m, [m[1;31morigin/feautre_card[m[33m, [m[1;31morigin/HEAD[m[33m)[m HEAD@{17}: checkout: moving from master to testFrontend
+[33mc0849a8[m[33m ([m[1;32msafeguard2[m[33m)[m HEAD@{18}: reset: moving to HEAD
+[33mc0849a8[m[33m ([m[1;32msafeguard2[m[33m)[m HEAD@{19}: checkout: moving from safeguard2 to master
+[33mc0849a8[m[33m ([m[1;32msafeguard2[m[33m)[m HEAD@{20}: checkout: moving from master to safeguard2
+[33mc0849a8[m[33m ([m[1;32msafeguard2[m[33m)[m HEAD@{21}: checkout: moving from safeguard2 to master
+[33mc0849a8[m[33m ([m[1;32msafeguard2[m[33m)[m HEAD@{22}: checkout: moving from master to safeguard2
+[33mc0849a8[m[33m ([m[1;32msafeguard2[m[33m)[m HEAD@{23}: pull --ff --recurse-submodules --progress origin: Fast-forward
+[33ma63d037[m HEAD@{24}: pull --ff --recurse-submodules --progress origin: Fast-forward
+[33m41243e4[m HEAD@{25}: checkout: moving from safeguard to master
+[33m7c5c8ba[m[33m ([m[1;32msafeguard[m[33m)[m HEAD@{26}: checkout: moving from master to safeguard
+[33m41243e4[m HEAD@{27}: pull --ff --recurse-submodules --progress origin: Fast-forward
+[33mb09d4ec[m HEAD@{28}: checkout: moving from safeguard to master
+[33m7c5c8ba[m[33m ([m[1;32msafeguard[m[33m)[m HEAD@{29}: checkout: moving from master to safeguard
+[33mb09d4ec[m HEAD@{30}: pull --ff --recurse-submodules --progress origin: Fast-forward
+[33m7c5c8ba[m[33m ([m[1;32msafeguard[m[33m)[m HEAD@{31}: checkout: moving from safeguard to master
+[33m7c5c8ba[m[33m ([m[1;32msafeguard[m[33m)[m HEAD@{32}: checkout: moving from master to safeguard
+[33m7c5c8ba[m[33m ([m[1;32msafeguard[m[33m)[m HEAD@{33}: commit: index fungerar med bootstrap
+[33mdc8eb26[m HEAD@{34}: pull --ff --recurse-submodules --progress origin: Fast-forward
+[33mea19a19[m HEAD@{35}: commit: Hämtningen av databas produkter lyckad.
+[33m34014b7[m HEAD@{36}: checkout: moving from help to master
+[33md889892[m[33m ([m[1;32mhelp[m[33m)[m HEAD@{37}: checkout: moving from master to help
+[33m34014b7[m HEAD@{38}: commit: Jag får kontakt med databasen nu.
+[33m36b4336[m HEAD@{39}: commit: Visa böcker funkar inte
+[33md889892[m[33m ([m[1;32mhelp[m[33m)[m HEAD@{40}: merge help: Fast-forward
+[33me6cb068[m HEAD@{41}: checkout: moving from help to master
+[33md889892[m[33m ([m[1;32mhelp[m[33m)[m HEAD@{42}: checkout: moving from master to help
+[33me6cb068[m HEAD@{43}: checkout: moving from help to master
+[33md889892[m[33m ([m[1;32mhelp[m[33m)[m HEAD@{44}: commit: ändrad css och products.html är nu thymeleaf
+[33mbe55734[m[33m ([m[1;31morigin/help[m[33m)[m HEAD@{45}: checkout: moving from help to help
+[33mbe55734[m[33m ([m[1;31morigin/help[m[33m)[m HEAD@{46}: checkout: moving from carrodev to help
+[33m2b69961[m[33m ([m[1;31morigin/carrodev[m[33m, [m[1;32mcarrodev[m[33m)[m HEAD@{47}: checkout: moving from help to carrodev
+[33mbe55734[m[33m ([m[1;31morigin/help[m[33m)[m HEAD@{48}: commit: hjälp
+[33me6cb068[m HEAD@{49}: checkout: moving from carrodev to help
+[33m2b69961[m[33m ([m[1;31morigin/carrodev[m[33m, [m[1;32mcarrodev[m[33m)[m HEAD@{50}: checkout: moving from master to carrodev
+[33me6cb068[m HEAD@{51}: checkout: moving from carrodev to master
+[33m2b69961[m[33m ([m[1;31morigin/carrodev[m[33m, [m[1;32mcarrodev[m[33m)[m HEAD@{52}: checkout: moving from master to carrodev
+[33mc6ddb22[m HEAD@{53}: checkout: moving from carrodev to master
+[33m2b69961[m[33m ([m[1;31morigin/carrodev[m[33m, [m[1;32mcarrodev[m[33m)[m HEAD@{54}: checkout: moving from feautre_borrow to carrodev
+[33m5b7e530[m[33m ([m[1;32mfeautre_borrow[m[33m)[m HEAD@{55}: checkout: moving from carrodev to feautre_borrow
+[33m2b69961[m[33m ([m[1;31morigin/carrodev[m[33m, [m[1;32mcarrodev[m[33m)[m HEAD@{56}: checkout: moving from feautre_borrow to carrodev
+[33m5b7e530[m[33m ([m[1;32mfeautre_borrow[m[33m)[m HEAD@{57}: checkout: moving from carrodev to feautre_borrow
+[33m2b69961[m[33m ([m[1;31morigin/carrodev[m[33m, [m[1;32mcarrodev[m[33m)[m HEAD@{58}: commit: MongoDB anslutning
+[33mc6ddb22[m HEAD@{59}: checkout: moving from master to carrodev
+[33mc6ddb22[m HEAD@{60}: reset: moving to HEAD
+[33mc6ddb22[m HEAD@{61}: commit: Krångel3
+[33m39468a3[m HEAD@{62}: pull --ff --recurse-submodules --progress origin: Merge made by the 'ort' strategy.
+[33mecc4641[m HEAD@{63}: commit: Krångel2
+[33m9eb8fac[m HEAD@{64}: commit: Krångel
+[33m1363e70[m HEAD@{65}: clone: from https://github.com/Campus-Molndal-JINH23/BokBubblan.git
