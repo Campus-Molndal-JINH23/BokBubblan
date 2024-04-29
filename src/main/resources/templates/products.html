@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -53,6 +54,9 @@
             <div class="col">
                 <ul class="nav justify-content-center">
                     <li class="nav-item">
+                        <a class="nav-link" th:href="@{/products}">Alla Böcker</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#">Signerade förstautgåvor</a>
                     </li>
                     <li class="nav-item">
@@ -72,65 +76,29 @@
     <h1>Product Catalog</h1>
     <div>Number of Products: <span th:text="${#lists.size(products)}"></span></div>
 
-    <!-- Knappar för olika kategorier -->
-    <div>
-        <a href="/interaktiva_barnbocker"><button>Interaktiva barnböcker</button></a>
-        <a href="/signerade_forstautgavor"><button>Signerade förstautgåvor</button></a>
-        <a href="/sallsynta_fantasyserier"><button>Sällsynta fantasyserier</button></a>
+    <div th:text="${#lists.size(products)}"></div>
+    <div th:each="product : ${products}" class="product">
+        <h2 th:text="${product.title}">Product Title</h2>
+        <p><strong>Author:</strong> <span th:text="${product.author}">Author Name</span></p>
+        <p><strong>Description:</strong> <span th:text="${product.description}">Product Description</span></p>
+        <p><strong>Year:</strong> <span th:text="${product.year}">Year of Publication</span></p>
+        <p><strong>Category:</strong> <span th:text="${product.category}">Category</span></p>
+        <p><strong>Item Number:</strong> <span th:text="${product.itemNumber}">12345</span></p>
+        <p><strong>Price:</strong> <span th:text="${product.price} + ' kr'">100 kr</span></p>
+        <form th:action="@{/cart/add/{productId}(productId=${product.id})}" method="post">
+            <button type="submit">Köp</button>
+        </form>
     </div>
 
-    <!-- Filter- och sorteringsknappar -->
-    <div>
-        <button id="filterByPriceAsc">Lägst-högst pris</button>
-        <button id="filterByPriceDesc">Högst-lägst pris</button>
-    </div>
+    <footer class="text-center py-4 mt-4">
+        <div class="d-flex justify-content-center align-items-center">
+            <a href="#" class="me-3">Om oss</a>
+            <a href="#" class="me-3">Vanliga frågor</a>
+            <a href="#">Kontakta oss</a>
+        </div>
+    </footer>
 
-    <!-- Visa alla produkter -->
-    <div id="productList" class="product-list">
-        <!-- Produkterna visas här dynamiskt -->
-    </div>
 </div>
-
-<script>
-    // Funktion för att hämta och visa produkter baserat på sorteringsordning
-    function fetchAndDisplayProducts(order) {
-        $.get("/sortByPrice", {order: order}, function(products) {
-            var productListHtml = "";
-            products.forEach(function(product) {
-                productListHtml += "<div class='product'>";
-                productListHtml += "<h2>" + product.title + "</h2>";
-                productListHtml += "<p><strong>Författare:</strong> " + product.author + "</p>";
-                productListHtml += "<p><strong>Beskrivning:</strong> " + product.description + "</p>";
-                productListHtml += "<p><strong>Utgivningsår:</strong> " + product.year + "</p>";
-                productListHtml += "<p><strong>Genre:</strong> " + product.category + "</p>";
-                productListHtml += "<p><strong>Varunummer:</strong> " + product.itemNumber + "</p>";
-                productListHtml += "<p><strong>Pris:</strong> " + product.price + " kr</p>";
-                productListHtml += "<form action='/cart/add/" + product.id + "' method='post'>";
-                productListHtml += "<button type='submit'>Köp</button>";
-                productListHtml += "</form>";
-                productListHtml += "<a href='/product_card/" + product.id + "'><button type='button'>Läs mer</button></a>";
-                productListHtml += "</div>";
-            });
-            $("#productList").html(productListHtml);
-            $("#productCount").text(products.length);
-        });
-    }
-
-    // Klickhändelse för "Lägst-högst pris" knappen
-    $("#filterByPriceAsc").click(function() {
-        fetchAndDisplayProducts("asc");
-    });
-
-    // Klickhändelse för "Högst-lägst pris" knappen
-    $("#filterByPriceDesc").click(function() {
-        fetchAndDisplayProducts("desc");
-    });
-
-    // Ladda produkter vid sidans start
-    $(document).ready(function() {
-        fetchAndDisplayProducts("asc"); // Visa produkter sorterade i stigande ordning som standard
-    });
-</script>
 
 </body>
 </html>
