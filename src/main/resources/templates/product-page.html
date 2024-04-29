@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Produktsida</title>
+
+    <!-- URL för ikoner -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" th:href="@{/css/custom-style.css}">
+</head>
+<body>
+
+
+<div class="container mt-4">
+    <header class="mb-4">
+        <div class="row justify-content-between align-items-center">
+            <div class="col-auto">
+                <h2 class="mb-0">
+                    <img th:src="@{/img/logga.png}" alt="Bokbubblan" id="custom-logo">
+                </h2>
+            </div>
+
+            <div class="col">
+                <div class="input-group">
+                    <input type="search" class="form-control custom-search" placeholder="Sök">
+                    <button class="btn btn-outline-secondary" type="submit">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </div>
+
+
+            <div class="col-auto d-flex align-items-center">
+                <button class="btn btn-outline-secondary me-2" type="button"> <!-- Added me-2 to add margin on the right -->
+                    <i class="bi bi-cart4 custom-icon-size"></i>
+                </button>
+                <button class="btn btn-outline-secondary" type="button">
+                    <i class="bi bi-person-circle custom-icon-size"></i>
+                </button>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col">
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Signerade förstautgåvor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sällsynta fantasyserier</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Interaktiva barnböcker</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+</div>
+
+<main>
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-3 col-lg-2 my-3 p-3 border custom-border">
+            <!-- Placeholder for the product image -->
+            <img th:src="@{/img/bokbild.png}" class="card-img-top" alt="Bokomslag">
+        </div>
+
+        <div class="col-12 col-md-8 col-lg-6">
+            <h1 th:text="${product.title}">Product Title</h1>
+            <p><strong>Author:</strong> <span th:text="${product.author}">Author Name</span></p>
+            <p><strong>Description:</strong> <span th:text="${product.description}">Product Description</span></p>
+            <p><strong>Year:</strong> <span th:text="${product.year}">Year of Publication</span></p>
+            <p><strong>Category:</strong> <span th:text="${product.category}">Category</span></p>
+            <p><strong>Item Number:</strong> <span th:text="${product.itemNumber}">Item Number</span></p>
+            <p style="font-size: 1.5em;"><strong>Price:</strong> <span th:text="${product.price} + ' kr'">Price</span></p>
+            <form th:action="@{/cart/add/{itemNumber}(itemNumber=${product.itemNumber})}" method="post" class="d-flex justify-content-between align-items-center">
+                <button type="submit" class="btn btn-primary" style="flex: 2 0 25%; max-width: 250px;" class="me-2">Köp</button>
+                <span>Eller</span>
+                <button type="submit" class="btn btn-primary" style="flex: 2 0 25%; max-width: 250px;" class="ms-2">Låna i 24H</button>
+            </form>
+
+
+        </div>
+    </div>
+</main>
+
+<footer class="text-center py-4 mt-4">
+    <div class="d-flex justify-content-center align-items-center">
+        <a href="#" class="me-3">Om oss</a>
+        <a href="#" class="me-3">Vanliga frågor</a>
+        <a href="#">Kontakta oss</a>
+    </div>
+</footer>
+
+</body>
+</html>

@@ -97,7 +97,11 @@ body {
 }
 
 .card-img-top {
+<<<<<<< HEAD
+
+=======
     height: 200px; /* Fast höjd för bilderna */
+>>>>>>> 3d453ca07671ca93a72bf7ec403c9d67934a00d4
     object-fit: cover; /* Ser till att bilder passar snyggt */
 }
 
