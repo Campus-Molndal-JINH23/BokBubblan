@@ -32,6 +32,19 @@ public class CartController {
 
         return "cart"; //retur html sidan
     }
+    @PostMapping("/add/{productId}")
+    public String addToCart(@PathVariable("productId") String productId) {
+        Product product = productService.getProductById(productId);
+        if (product != null) {
+            cartService.addToCart(product);
+        } else {
+            // Produkt hittades inte, kan lägga till lämplig felhantering här
+            System.out.println("Produkten med ID " + productId + " hittades inte.");
+        }
+        return "redirect:/products"; // Hamna på produktsidan efter att ha lagt till
+    }
+
+
 
 
 
@@ -43,13 +56,28 @@ public class CartController {
         return "cart"; //retur namn på html för att visa vagn
     }  */
 
-    //lägg till
+    /* fungerande
     @PostMapping("/add/{productId}")
+
+    public String addToCart(@PathVariable String productId) {
+        Product product = productService.getProductById(productId);
+        if (product != null) {
+            cartService.addToCart(product);
+        } else {
+            // Produkt hittades inte, kan lägga till lämplig felhantering här
+            System.out.println("Produkten med ID " + productId + " hittades inte.");
+        }
+        return "redirect:/products"; // Hamna på produktsidan efter att ha lagt till
+    } /*
+
+
+    //lägg till
+    /*@PostMapping("/add/{productId}")
     public String addToCart(@PathVariable String productId) {
         Product product = productService.getProductById(productId);
         cartService.addToCart(product);
         return "redirect:/products"; //hamna på produkterna efter man lagt till.
-    }
+    } */
 
     //ta bort
     @PostMapping("/remove/{productId}")
@@ -73,5 +101,14 @@ public class CartController {
         cartService.clearCart();
         return "redirect:/cart"; //vara kvar i kundvagn efter du tömt
     }
+
+    //för produktkort
+    @GetMapping("/product/{productId}")
+    public String viewProduct(@PathVariable String productId, Model model) {
+        Product product = productService.getProductById(productId);
+        model.addAttribute("product", product);
+        return "product_card"; // Ersätt "product_card" med namnet på HTML-filen för produktdetaljer
+    }
+
 
 }

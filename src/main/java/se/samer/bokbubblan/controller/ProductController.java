@@ -53,6 +53,7 @@ public class ProductController {
         model.addAttribute("products", products);
         return "sallsynta_fantasyserier"; //retur html sidan
     }
+
     @GetMapping("/error")
     public String handleError() {
         return "error"; // Skapa en error.html-sida för att visa ett felmeddelande
@@ -75,7 +76,24 @@ public class ProductController {
     public List<Product> sortByPrice(@RequestParam String order) {
         return productFilter.sortByPrice(productService.getAllProducts(), order);
     }
+
+    //för produktkort när man klickar på "läs mer" i varukatalog
+    @GetMapping("/product_card/{productId}")
+    public String showProductCard(@PathVariable String productId, Model model) {
+        //hämta på id
+        Product product = productService.getProductById(productId);
+        //kolla om den finns
+        if (product != null) {
+            //skicka info till produktsidan
+            model.addAttribute("product", product);
+            return "product_card"; //skickas till sidan som ska visas endast det produktkortet
+        } else {
+            return "redirect:/error"; //error om det inte finns
+        }
+    }
 }
+
+
 
 
     /* @GetMapping("/product_card/{productId}")
