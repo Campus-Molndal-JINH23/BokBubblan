@@ -11,4 +11,6 @@ public class HomeController {
         return "index"; // Returnerar startsidan (index.html)
     }
 
+
+
 }

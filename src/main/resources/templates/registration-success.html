@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Success</title>
+    <title>Registrering Lyckad</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
@@ -26,7 +26,7 @@
             text-align: center;
         }
 
-        .success-container h1 {
+        .success-container h2 {
             margin-top: 0;
             margin-bottom: 20px;
             color: #333;
@@ -58,11 +58,28 @@
 </head>
 <body>
 <div class="success-container">
-    <h1>Registreringen lyckades <i class="far fa-check-circle fa-icon"></i></h1>
-    <p>Tack för att du registrerade dig hos BokBubblan!</p>
+    <h1>Registreringen lyckades! <i class="far fa-smile fa-icon"></i></h1>
+    <p>Välkommen till BokBubblan! Du är nu inloggad, <span th:text="${userProfile.username}"></span>!</p>
 
-    <!--- Lägg till en länk till startsidan -->
-    <a href="/">Tillbaka till startsidan <i class="fas fa-house fa-icon"></i></a>
+    <div class="container">
+        <table>
+            <tr>
+                <th>Användarnamn</th>
+                <td th:text="${userProfile != null ? userProfile.username : 'Inget användarnamn tillgängligt'}">Användarnamn</td>
+            </tr>
+            <tr>
+                <th>E-post</th>
+                <td th:text="${userProfile != null ? userProfile.email : 'Ingen e-post tillgänglig'}">E-post</td>
+            </tr>
+            <!-- Lägg till fler fält vid behov -->
+        </table>
+    </div>
+
+    <a th:href="@{/}">Tillbaka till startsidan <i class="fas fa-home fa-icon"></i></a>
+    <br>
+    <!--Den här länken kommer inte funka i Localhost:8080/user_profile -->
+    <a th:href="@{/user_profile}">Till din profil <i class="fas fa-user"></i></a>
+
 </div>
 </body>
 </html>
