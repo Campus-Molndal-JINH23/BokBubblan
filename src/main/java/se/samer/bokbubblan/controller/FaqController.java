@@ -4,13 +4,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class HomeController {
+public class FaqController {
 
-    @GetMapping("/")
-    public String home() {
-        return "index"; // Returnerar startsidan (index.html)
+    @GetMapping("/faq")
+    public String faqPage() {
+        return "faq";
     }
-
-
-
 }

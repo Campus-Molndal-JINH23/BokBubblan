@@ -62,6 +62,21 @@
     <h2>Inloggningen lyckades <i class="far fa-smile fa-icon"></i></h2>
     <p>Välkommen till BokBubblan! Du är nu inloggad, <span th:text="${username}"></span>!</p>
 
+    <div class="container">
+        <h1>Din Profil <i class="fas fa-user"></i></h1>
+        <table>
+            <tr>
+                <th>Username</th>
+                <td th:text="${userProfile.username}">Username</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td th:text="${userProfile.email}">Email</td>
+            </tr>
+            <!-- Add more fields as needed -->
+        </table>
+    </div>
+
     <!-- Lägg till en länk till startsidan -->
     <a href="/">Tillbaka till startsidan <i class="fas fa-house fa-icon"></i></a>
 </div>

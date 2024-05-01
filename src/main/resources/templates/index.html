@@ -73,6 +73,8 @@
     <main>
         <section class="welcome text-center mb-4">
             <h1>Välkommen till Bokbubblan!</h1>
+            <br>
+            <h5>Här hittar du ett stort urval av böcker inom alla möjliga genrer. Utforska vårt sortiment och hitta din nästa läsupplevelse.</h5>
         </section>
         <section class="featured mb-4">
             <h2 class="text-center mb-4">Utvalt för dig</h2>
@@ -127,9 +129,9 @@
 
     <footer class="text-center py-4 mt-4">
         <div class="d-flex justify-content-center align-items-center">
-            <a href="#" class="me-3">Om oss</a>
-            <a href="#" class="me-3">Vanliga frågor</a>
-            <a href="#">Kontakta oss</a>
+            <a th:href="@{/about}" class="me-3">Om oss</a>
+            <a th:href="@{/faq}" class="me-3">Vanliga frågor</a>
+            <a th:href="@{/contact}">Kontakta oss</a>
         </div>
     </footer>
 

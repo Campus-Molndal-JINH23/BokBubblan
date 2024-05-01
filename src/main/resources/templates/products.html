@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -12,6 +11,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" th:href="@{/css/custom-style.css}">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 
@@ -27,7 +28,7 @@
 
             <div class="col">
                 <div class="input-group">
-                    <input type="search" class="form-control custom-search" placeholder="Sök">
+                    <input type="search" class="form-control custom-search" placeholder="Sök" aria-label="Search">
                     <button class="btn btn-outline-secondary" type="submit">
                         <i class="bi bi-search"></i>
                     </button>
@@ -36,18 +37,18 @@
 
 
             <div class="col-auto d-flex align-items-center">
-                <button class="btn btn-outline-secondary me-2" type="button"> <!-- Added me-2 to add margin on the right -->
-                    <i class="bi bi-cart4 custom-icon-size"></i>
-                </button>
-                <button class="btn btn-outline-secondary" type="button">
-                    <i class="bi bi-person-circle custom-icon-size"></i>
-                </button>
+                <form th:action="@{/cart}" method="get" class="me-2">
+                    <button type="submit" class="btn btn-outline-secondary">
+                        <i class="bi bi-cart4 custom-icon-size"></i>
+                    </button>
+                </form>
+
+                <form th:action="@{/login}" method="get">
+                    <button type="submit" class="btn btn-outline-secondary">
+                        <i class="bi bi-person-circle custom-icon-size"></i>
+                    </button>
+                </form>
             </div>
-
-
-
-
-
 
         </div>
         <div class="row mt-3">
@@ -57,48 +58,99 @@
                         <a class="nav-link" th:href="@{/products}">Alla Böcker</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Signerade förstautgåvor</a>
+                        <a class="nav-link" th:href="@{/signerade_forstautgavor}">Signerade förstautgåvor</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Sällsynta fantasyserier</a>
+                        <a class="nav-link" th:href="@{/sallsynta_fantasyserier}">Sällsynta fantasyserier</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Interaktiva barnböcker</a>
+                        <a class="nav-link" th:href="@{/interaktiva_barnbocker}">Interaktiva barnböcker</a>
                     </li>
                 </ul>
             </div>
         </div>
+
     </header>
 </div>
 
-
 <div class="container">
-    <h1>Product Catalog</h1>
-    <div>Number of Products: <span th:text="${#lists.size(products)}"></span></div>
+    <h1>Produktkatalog</h1>
+    <div>Tillgängliga böcker just nu: <span id="productCount"></span></div>
 
-    <div th:text="${#lists.size(products)}"></div>
-    <div th:each="product : ${products}" class="product">
-        <h2 th:text="${product.title}">Product Title</h2>
-        <p><strong>Author:</strong> <span th:text="${product.author}">Author Name</span></p>
-        <p><strong>Description:</strong> <span th:text="${product.description}">Product Description</span></p>
-        <p><strong>Year:</strong> <span th:text="${product.year}">Year of Publication</span></p>
-        <p><strong>Category:</strong> <span th:text="${product.category}">Category</span></p>
-        <p><strong>Item Number:</strong> <span th:text="${product.itemNumber}">12345</span></p>
-        <p><strong>Price:</strong> <span th:text="${product.price} + ' kr'">100 kr</span></p>
-        <form th:action="@{/cart/add/{productId}(productId=${product.id})}" method="post">
-            <button type="submit">Köp</button>
-        </form>
+    <!-- Knappar för olika kategorier -->
+    <div>
+        <a href="/interaktiva_barnbocker"><button>Interaktiva barnböcker</button></a>
+        <a href="/signerade_forstautgavor"><button>Signerade förstautgåvor</button></a>
+        <a href="/sallsynta_fantasyserier"><button>Sällsynta fantasyserier</button></a>
     </div>
 
-    <footer class="text-center py-4 mt-4">
-        <div class="d-flex justify-content-center align-items-center">
-            <a href="#" class="me-3">Om oss</a>
-            <a href="#" class="me-3">Vanliga frågor</a>
-            <a href="#">Kontakta oss</a>
-        </div>
-    </footer>
+    <!-- Filter- och sorteringsknappar -->
+    <div>
+        <button id="filterByPriceAsc">Lägst-högst pris</button>
+        <button id="filterByPriceDesc">Högst-lägst pris</button>
+    </div>
+
+    <!-- Visa alla produkter -->
+    <div id="productList" class="product-list">
+        <!-- Produkterna visas här dynamiskt -->
+    </div>
+</div>
+
+
+
+<footer class="text-center py-4 mt-4">
+    <div class="d-flex justify-content-center align-items-center">
+        <a th:href="@{/about}" class="me-3">Om oss</a>
+        <a th:href="@{/faq}" class="me-3">Vanliga frågor</a>
+        <a th:href="@{/contact}">Kontakta oss</a>
+    </div>
+</footer>
 
 </div>
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // Funktion för att hämta och visa produkter baserat på sorteringsordning
+    function fetchAndDisplayProducts(order) {
+        $.get("/sortByPrice", {order: order}, function(products) {
+            var productListHtml = "";
+            products.forEach(function(product) {
+                productListHtml += "<div class='product'>";
+                productListHtml += "<h2>" + product.title + "</h2>";
+                productListHtml += "<p><strong>Författare:</strong> " + product.author + "</p>";
+                productListHtml += "<p><strong>Beskrivning:</strong> " + product.description + "</p>";
+                productListHtml += "<p><strong>Utgivningsår:</strong> " + product.year + "</p>";
+                productListHtml += "<p><strong>Genre:</strong> " + product.category + "</p>";
+                productListHtml += "<p><strong>Varunummer:</strong> " + product.itemNumber + "</p>";
+                productListHtml += "<p><strong>Pris:</strong> " + product.price + " kr</p>";
+                productListHtml += "<form action='/cart/add/" + product.id + "' method='post'>";
+                productListHtml += "<button type='submit'>Köp</button>";
+                productListHtml += "</form>";
+                productListHtml += "<a href='/product_card/" + product.id + "'><button type='button'>Läs mer</button></a>";
+                productListHtml += "</div>";
+            });
+            $("#productList").html(productListHtml);
+            $("#productCount").text(products.length);
+        });
+    }
+
+    // Klickhändelse för "Lägst-högst pris" knappen
+    $("#filterByPriceAsc").click(function() {
+        fetchAndDisplayProducts("asc");
+    });
+
+    // Klickhändelse för "Högst-lägst pris" knappen
+    $("#filterByPriceDesc").click(function() {
+        fetchAndDisplayProducts("desc");
+    });
+
+    // Ladda produkter vid sidans start
+    $(document).ready(function() {
+        fetchAndDisplayProducts("asc"); // Visa produkter sorterade i stigande ordning som standard
+    });
+</script>
 
 </body>
 </html>

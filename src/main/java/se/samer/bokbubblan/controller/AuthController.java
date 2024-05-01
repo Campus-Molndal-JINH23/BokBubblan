@@ -32,13 +32,17 @@ public class AuthController {
         boolean isAuthenticated = authService.authenticate(username, password);
         if (isAuthenticated) {
             model.addAttribute("username", username);
-            return "home"; // Omdirigera till den nya inloggade startsidan
+            return "redirect:/user_profile"; // Omdirigera till den nya inloggade startsidan
         } else {
             // Authentication failed, add error message to model and return login page
             model.addAttribute("error", true);
             return "login"; // Return to login page with error message
         }
+    }
 
+    @GetMapping("/login-success")
+    public String loginSuccessPage() {
+        return "login-success"; // Returnera namnet på bekräftelsesidan
     }
 
 
@@ -56,7 +60,7 @@ public class AuthController {
         newUser.setPassword(password); // Ange lösenordet
         newUser.setEnabled(true);
         userService.register(newUser); // Registrera användaren
-        return "redirect:/registration-success"; // Omdirigera till bekräftelsesidan efter att registreringen är klar
+        return "redirect:/user_profile"; // Omdirigera till bekräftelsesidan efter att registreringen är klar
     }
 
     @GetMapping("/registration-success")
