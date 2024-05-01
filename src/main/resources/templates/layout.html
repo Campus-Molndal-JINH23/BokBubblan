@@ -1,0 +1,20 @@
+<!-- layout.html -->
+
+<!DOCTYPE html>
+<html lang="sv" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Meta tags, stylesheets, and other head content -->
+</head>
+<body>
+<!-- Include the navigation -->
+<div th:replace="navigation.html"></div>
+
+<!-- Page content -->
+<div class="container">
+    <!-- Your page content goes here -->
+    <div th:include="content"></div>
+</div>
+
+<!-- Footer and other common elements -->
+</body>
+</html>

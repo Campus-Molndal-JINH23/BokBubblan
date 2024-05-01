@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="sv" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sökresultat</title>
+    <!-- Font Awesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        h1 {
+            color: #343a40;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .books-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        .book-item {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .book-title {
+            font-weight: bold;
+            color: #343a40;
+        }
+
+        .book-author {
+            color: #6c757d;
+        }
+
+        .no-results {
+            text-align: center;
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+<h1>Sökresultat</h1>
+
+<div th:if="${books}">
+    <ul class="books-list">
+        <li th:each="book : ${books}" class="book-item">
+            <span class="book-title" th:text="${book.title}"></span><br>
+            <span class="book-author"><i class="fas fa-user"></i> <span th:text="${book.author}"></span></span>
+        </li>
+    </ul>
+</div>
+<div th:unless="${books}" class="no-results">
+    <p>Inga resultat hittades.</p>
+</div>
+
+<!-- Font Awesome JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+</body>
+</html>

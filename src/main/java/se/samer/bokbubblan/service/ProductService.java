@@ -37,6 +37,11 @@ public class ProductService {
     public List<Product> getProductsByCategory(String category) {
         return productRepository.findByCategory(category);
     }
+
+    public List<Product> searchProducts(String query) {
+        return productRepository.findByTitleContainingIgnoreCase(query);
+    }
+}
 /*
     public List<Product> getAllProducts() {
         // Create a temporary hardcoded list of Product objects
@@ -80,4 +85,3 @@ public class ProductService {
     }
 
      */
-}
