@@ -25,10 +25,13 @@
 
             <div class="col">
                 <div class="input-group">
-                    <input type="search" class="form-control custom-search" placeholder="Sök" aria-label="Search">
-                    <button class="btn btn-outline-secondary" type="submit">
-                        <i class="bi bi-search"></i>
-                    </button>
+                    <!-- Ändrade formuläret för att inkludera action och method attribut -->
+                    <form th:action="@{/search}" method="get" class="input-group">
+                        <input type="search" class="form-control custom-search" placeholder="Sök" aria-label="Search" name="query">
+                        <button class="btn btn-outline-secondary" type="submit">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </form>
                 </div>
             </div>
 
@@ -68,72 +71,72 @@
         </div>
 
     </header>
-    </div>
+</div>
 
-    <main>
-        <section class="welcome text-center mb-4">
-            <h1>Välkommen till Bokbubblan!</h1>
-            <br>
-            <h5>Här hittar du ett stort urval av böcker inom alla möjliga genrer. Utforska vårt sortiment och hitta din nästa läsupplevelse.</h5>
-        </section>
-        <section class="featured mb-4">
-            <h2 class="text-center mb-4">Utvalt för dig</h2>
+<main>
+    <section class="welcome text-center mb-4">
+        <h1>Välkommen till Bokbubblan!</h1>
+        <br>
+        <h5>Här hittar du ett stort urval av böcker inom alla möjliga genrer. Utforska vårt sortiment och hitta din nästa läsupplevelse.</h5>
+    </section>
+    <section class="featured mb-4">
+        <h2 class="text-center mb-4">Utvalt för dig</h2>
 
 
-            <div class="row justify-content-center">
-                <!-- Example for one book card, repeat this div five times -->
-                <div class="col-6 col-sm-4 col-md-2 mb-3">
-                    <div class="card h-100">
-                        <img th:src="@{/img/bokbild.png}" class="card-img-top" alt="Bokomslag">
-                        <div class="card-body">
-                            <button class="btn btn-primary w-100">Lägg till</button>
-                        </div>
+        <div class="row justify-content-center">
+            <!-- Example for one book card, repeat this div five times -->
+            <div class="col-6 col-sm-4 col-md-2 mb-3">
+                <div class="card h-100">
+                    <img th:src="@{/img/bokbild.png}" class="card-img-top" alt="Bokomslag">
+                    <div class="card-body">
+                        <button class="btn btn-primary w-100">Lägg till</button>
                     </div>
                 </div>
-                <div class="col-6 col-sm-4 col-md-2 mb-3">
-                    <div class="card h-100">
-                        <img th:src="@{/img/bokbild.png}" class="card-img-top" alt="Bokomslag">
-                        <div class="card-body">
-                            <button class="btn btn-primary w-100">Lägg till</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-sm-4 col-md-2 mb-3">
-                    <div class="card h-100">
-                        <img th:src="@{/img/bokbild.png}" class="card-img-top" alt="Bokomslag">
-                        <div class="card-body">
-                            <button class="btn btn-primary w-100">Lägg till</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-sm-4 col-md-2 mb-3">
-                    <div class="card h-100">
-                        <img th:src="@{/img/bokbild.png}" class="card-img-top" alt="Bokomslag">
-                        <div class="card-body">
-                            <button class="btn btn-primary w-100">Lägg till</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-sm-4 col-md-2 mb-3">
-                    <div class="card h-100">
-                        <img th:src="@{/img/bokbild.png}" class="card-img-top" alt="Bokomslag">
-                        <div class="card-body">
-                            <button class="btn btn-primary w-100">Lägg till</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Repeat above div for each book card -->
             </div>
-        </section>
-    </main>
-
-    <footer class="text-center py-4 mt-4">
-        <div class="d-flex justify-content-center align-items-center">
-            <a th:href="@{/about}" class="me-3">Om oss</a>
-            <a th:href="@{/faq}" class="me-3">Vanliga frågor</a>
-            <a th:href="@{/contact}">Kontakta oss</a>
+            <div class="col-6 col-sm-4 col-md-2 mb-3">
+                <div class="card h-100">
+                    <img th:src="@{/img/bokbild.png}" class="card-img-top" alt="Bokomslag">
+                    <div class="card-body">
+                        <button class="btn btn-primary w-100">Lägg till</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-sm-4 col-md-2 mb-3">
+                <div class="card h-100">
+                    <img th:src="@{/img/bokbild.png}" class="card-img-top" alt="Bokomslag">
+                    <div class="card-body">
+                        <button class="btn btn-primary w-100">Lägg till</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-sm-4 col-md-2 mb-3">
+                <div class="card h-100">
+                    <img th:src="@{/img/bokbild.png}" class="card-img-top" alt="Bokomslag">
+                    <div class="card-body">
+                        <button class="btn btn-primary w-100">Lägg till</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-sm-4 col-md-2 mb-3">
+                <div class="card h-100">
+                    <img th:src="@{/img/bokbild.png}" class="card-img-top" alt="Bokomslag">
+                    <div class="card-body">
+                        <button class="btn btn-primary w-100">Lägg till</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Repeat above div for each book card -->
         </div>
-    </footer>
+    </section>
+</main>
+
+<footer class="text-center py-4 mt-4">
+    <div class="d-flex justify-content-center align-items-center">
+        <a th:href="@{/about}" class="me-3">Om oss</a>
+        <a th:href="@{/faq}" class="me-3">Vanliga frågor</a>
+        <a th:href="@{/contact}">Kontakta oss</a>
+    </div>
+</footer>
 
 </div>
 

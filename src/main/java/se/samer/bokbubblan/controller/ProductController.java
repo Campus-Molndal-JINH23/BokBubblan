@@ -77,6 +77,19 @@ public class ProductController {
         return productFilter.sortByPrice(productService.getAllProducts(), order);
     }
 
+    @GetMapping("/search")
+    public String searchBooks(@RequestParam String query, Model model) {
+        List<Product> matchingBooks = productService.searchProducts(query);
+        model.addAttribute("books", matchingBooks);
+        return "search_results";
+    }
+
+    @GetMapping("/search-results")
+    public String showSearchResults(Model model) {
+        return "search_results";
+    }
+
+
     //för produktkort när man klickar på "läs mer" i varukatalog
     @GetMapping("/product_card/{productId}")
     public String showProductCard(@PathVariable String productId, Model model) {
