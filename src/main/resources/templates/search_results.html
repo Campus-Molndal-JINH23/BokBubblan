@@ -9,6 +9,8 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
+
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -60,11 +62,14 @@
         .rent-btn {
             position: absolute;
             top: 10px;
-            right: 50px;
+            right: 70px; /* Adjusted to move the Rent button slightly to the left */
         }
     </style>
+
+
 </head>
 <body>
+<a class="nav-link" th:href="@{/}">Tillbaka till Förstasidan</a>
 <h1>Sökresultat</h1>
 
 <div th:if="${books}">

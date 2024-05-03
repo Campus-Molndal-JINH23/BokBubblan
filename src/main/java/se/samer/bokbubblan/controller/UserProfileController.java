@@ -11,8 +11,8 @@ public class UserProfileController {
     // This method would ideally be replaced with one that retrieves user data from a service or database
     private UserProfile getDummyUserProfile() {
         UserProfile userProfile = new UserProfile();
-        userProfile.setUsername("JohnDoe");
-        userProfile.setEmail("john.doe@example.com");
+        userProfile.setUsername("Carro");
+        userProfile.setEmail("carolina.correia363@hotmail.com");
         // Add more user details as needed
         return userProfile;
     }

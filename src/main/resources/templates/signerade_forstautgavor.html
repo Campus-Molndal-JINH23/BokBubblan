@@ -4,25 +4,227 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Signerade Förstautgåvor</title>
+    <!-- URL för ikoner -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom Bootstrap Template CSS -->
-    <link rel="stylesheet" href="/css/custom-style.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" th:href="@{/css/custom-style.css}">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
+
+
+
+
+
+
+
+<div class="container mt-4">
+    <header class="mb-4">
+        <div class="row justify-content-between align-items-center">
+            <div class="col-auto">
+                <h2 class="mb-0">
+                    <a href="/"><img th:src="@{/img/logga.png}" alt="Bokbubblan" id="custom-logo"></a>
+                </h2>
+            </div>
+
+            <div class="col">
+                <div class="input-group">
+                    <input type="search" class="form-control custom-search" placeholder="Sök" aria-label="Search">
+                    <button class="btn btn-outline-secondary" type="submit">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </div>
+
+
+            <div class="col-auto d-flex align-items-center">
+                <form th:action="@{/cart}" method="get" class="me-2">
+                    <button type="submit" class="btn btn-outline-secondary">
+                        <i class="bi bi-cart4 custom-icon-size"></i>
+                    </button>
+                </form>
+
+                <form th:action="@{/login}" method="get">
+                    <button type="submit" class="btn btn-outline-secondary">
+                        <i class="bi bi-person-circle custom-icon-size"></i>
+                    </button>
+                </form>
+            </div>
+
+        </div>
+        <div class="row mt-3">
+            <div class="col">
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/products}">Alla Böcker</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/signerade_forstautgavor}">Signerade förstautgåvor</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/sallsynta_fantasyserier}">Sällsynta fantasyserier</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/interaktiva_barnbocker}">Interaktiva barnböcker</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </header>
+</div>
+
 <div class="container">
     <h1>Signerade Förstautgåvor</h1>
-    <div th:each="product : ${products}" th:if="${product.category == 'Signerade förstautgåvor'}" class="product">
-        <h2 th:text="${product.title}">Product Title</h2>
-        <p><strong>Author:</strong> <span th:text="${product.author}">Author Name</span></p>
-        <p><strong>Description:</strong> <span th:text="${product.description}">Product Description</span></p>
-        <p><strong>Year:</strong> <span th:text="${product.year}">Year of Publication</span></p>
-        <p><strong>Item Number:</strong> <span th:text="${product.itemNumber}">12345</span></p>
-        <p><strong>Price:</strong> <span th:text="${product.price} + ' kr'">100 kr</span></p>
-        <form th:action="@{/cart/add/{productId}(productId=${product.id})}" method="post">
+
+    <!-- Filter- och sorteringsknappar -->
+    <div>
+        <button id="filterByPriceAsc">Lägst-högst pris</button>
+        <button id="filterByPriceDesc">Högst-lägst pris</button>
+    </div>
+
+</div>
+</div>
+
+
+
+
+<div class="container">
+
+    <div class="product">
+        <h2>The Great Gatsby</h2>
+        <p><strong>Author:</strong> <span>F. Scott Fitzgerald</span></p>
+        <p><strong>Description:</strong> <span>En klassisk roman om Amerikanska drömmen och dess konsekvenser.</span></p>
+        <p><strong>Year:</strong> <span>1925</span></p>
+        <p><strong>Item Number:</strong> <span>SF001</span></p>
+        <p><strong>Price:</strong> <span>550.0 kr</span></p>
+        <form action="/cart/add/66261beadfc2d4c6579659ed" method="post">
+            <button type="submit">Köp</button>
+        </form>
+    </div>
+
+    <div class="product">
+        <h2>Pride and Prejudice</h2>
+        <p><strong>Author:</strong> <span>Jane Austen</span></p>
+        <p><strong>Description:</strong> <span>En tidlös berättelse om kärlek och samhällsnormer på den engelska landsbygden.</span></p>
+        <p><strong>Year:</strong> <span>1813</span></p>
+        <p><strong>Item Number:</strong> <span>SF002</span></p>
+        <p><strong>Price:</strong> <span>520.0 kr</span></p>
+        <form action="/cart/add/66261beadfc2d4c6579659ee" method="post">
+            <button type="submit">Köp</button>
+        </form>
+    </div>
+
+    <div class="product">
+        <h2>1984</h2>
+        <p><strong>Author:</strong> <span>George Orwell</span></p>
+        <p><strong>Description:</strong> <span>En dystopisk roman som utforskar övervakning och totalitär kontroll.</span></p>
+        <p><strong>Year:</strong> <span>1949</span></p>
+        <p><strong>Item Number:</strong> <span>SF003</span></p>
+        <p><strong>Price:</strong> <span>530.0 kr</span></p>
+        <form action="/cart/add/66261beadfc2d4c6579659ef" method="post">
+            <button type="submit">Köp</button>
+        </form>
+    </div>
+
+    <div class="product">
+        <h2>The Catcher in the Rye</h2>
+        <p><strong>Author:</strong> <span>J.D. Salinger</span></p>
+        <p><strong>Description:</strong> <span>En ikonisk roman om tonårsångest och alienation.</span></p>
+        <p><strong>Year:</strong> <span>1951</span></p>
+        <p><strong>Item Number:</strong> <span>SF004</span></p>
+        <p><strong>Price:</strong> <span>540.0 kr</span></p>
+        <form action="/cart/add/66261beadfc2d4c6579659f0" method="post">
+            <button type="submit">Köp</button>
+        </form>
+    </div>
+
+    <div class="product">
+        <h2>To Kill a Mockingbird</h2>
+        <p><strong>Author:</strong> <span>Harper Lee</span></p>
+        <p><strong>Description:</strong> <span>En gripande skildring av rättvisa och fördomar i den amerikanska sydstaten.</span></p>
+        <p><strong>Year:</strong> <span>1960</span></p>
+        <p><strong>Item Number:</strong> <span>SF005</span></p>
+        <p><strong>Price:</strong> <span>510.0 kr</span></p>
+        <form action="/cart/add/66261beadfc2d4c6579659f1" method="post">
+            <button type="submit">Köp</button>
+        </form>
+    </div>
+
+    <div class="product">
+        <h2>Moby-Dick</h2>
+        <p><strong>Author:</strong> <span>Herman Melville</span></p>
+        <p><strong>Description:</strong> <span>En episk berättelse om besättningen på ett valfångstskepp och deras besatthet av att jaga den vita valen.</span></p>
+        <p><strong>Year:</strong> <span>1851</span></p>
+        <p><strong>Item Number:</strong> <span>SF006</span></p>
+        <p><strong>Price:</strong> <span>560.0 kr</span></p>
+        <form action="/cart/add/66261beadfc2d4c6579659f2" method="post">
+            <button type="submit">Köp</button>
+        </form>
+    </div>
+
+    <div class="product">
+        <h2>Frankenstein</h2>
+        <p><strong>Author:</strong> <span>Mary Shelley</span></p>
+        <p><strong>Description:</strong> <span>En skrämmande historia om vetenskapens gränser och mänsklighetens ansvar.</span></p>
+        <p><strong>Year:</strong> <span>1818</span></p>
+        <p><strong>Item Number:</strong> <span>SF007</span></p>
+        <p><strong>Price:</strong> <span>515.0 kr</span></p>
+        <form action="/cart/add/66261beadfc2d4c6579659f3" method="post">
+            <button type="submit">Köp</button>
+        </form>
+    </div>
+
+    <div class="product">
+        <h2>The Adventures of Huckleberry Finn</h2>
+        <p><strong>Author:</strong> <span>Mark Twain</span></p>
+        <p><strong>Description:</strong> <span>En äventyrsberättelse om en ung pojkes flykt från samhällets restriktioner och rasismens verklighet.</span></p>
+        <p><strong>Year:</strong> <span>1884</span></p>
+        <p><strong>Item Number:</strong> <span>SF008</span></p>
+        <p><strong>Price:</strong> <span>525.0 kr</span></p>
+        <form action="/cart/add/66261beadfc2d4c6579659f4" method="post">
+            <button type="submit">Köp</button>
+        </form>
+    </div>
+
+    <div class="product">
+        <h2>Dracula</h2>
+        <p><strong>Author:</strong> <span>Bram Stoker</span></p>
+        <p><strong>Description:</strong> <span>En skräckroman som följer jakten på den legendariska vampyren över Europa.</span></p>
+        <p><strong>Year:</strong> <span>1897</span></p>
+        <p><strong>Item Number:</strong> <span>SF009</span></p>
+        <p><strong>Price:</strong> <span>570.0 kr</span></p>
+        <form action="/cart/add/66261beadfc2d4c6579659f5" method="post">
+            <button type="submit">Köp</button>
+        </form>
+    </div>
+
+    <div class="product">
+        <h2>Alice&#39;s Adventures in Wonderland</h2>
+        <p><strong>Author:</strong> <span>Lewis Carroll</span></p>
+        <p><strong>Description:</strong> <span>En surrealistisk berättelse om en flickas äventyr i en magisk värld fylld med konstiga karaktärer och händelser.</span></p>
+        <p><strong>Year:</strong> <span>1865</span></p>
+        <p><strong>Item Number:</strong> <span>SF010</span></p>
+        <p><strong>Price:</strong> <span>545.0 kr</span></p>
+        <form action="/cart/add/66261beadfc2d4c6579659f6" method="post">
             <button type="submit">Köp</button>
         </form>
     </div>
 </div>
+
+
+
+<footer class="text-center py-4 mt-4">
+    <div class="d-flex justify-content-center align-items-center">
+        <a th:href="@{/about}" class="me-3">Om oss</a>
+        <a th:href="@{/faq}" class="me-3">Vanliga frågor</a>
+        <a th:href="@{/contact}">Kontakta oss</a>
+    </div>
+</footer>
+
+
 </body>
 </html>

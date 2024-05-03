@@ -1,18 +1,17 @@
-/* Grundläggande anpassade färgvariabler */
 :root {
-    --button-blue: #007BFF; /* Bevara blå för knappar */
-    --button-hover-blue: #0056b3; /* Bevara mörkare blå för knappar vid hover */
-    --custom-cream: #fff; /* Vit för kontrast och element */
+    --button-blue: #007BFF;
+    --button-hover-blue: #0056b3;
+    --custom-cream: #fff;
 
-    --background-light: #f3eeea; /* beige för bakgrund */
+    --background-light: #f3eeea;
     --accentuation-light: #EBE3D5;
     --banner-color: #B0A695;
-    --text-dark: #776B5D; /* Mjukare mörk textfärg */
+    --text-dark: #776B5D;
 }
 
 /* Sätter hela sidans bakgrundsfärg */
 body {
-    background-color: var(--custom-cream); /* Använder beige som bakgrundsfärg */
+    background-color: var(--custom-cream);
 }
 
 /* Stil för logotypen */
@@ -23,30 +22,30 @@ body {
 
 /* Stilregler för loggan */
 #custom-logo {
-    max-width: 270px; /* Ange maximal bredd för loggan */
-    max-height: 300px; /* Ange maximal höjd för loggan */
+    max-width: 270px; /* bredd för loggan */
+    max-height: 300px; /* höjd för loggan */
 }
 
 /* Anpassar navigationslänkarna */
 .nav-link {
-    color: var(--custom-cream); /* Vit text */
-    background-color: var(--button-blue); /* Blå bakgrund */
-    border: none; /* Ingen ram */
+    color: var(--custom-cream);
+    background-color: var(--button-blue);
+    border: none;
     display: inline-block; /* För att tillämpa padding och border-radius */
     padding: 0.5rem 1rem; /* Padding runt texten */
     margin: 0.25rem;
-    border-radius: 0.25rem; /* Runda hörn som kortknapparna */
+    border-radius: 0.25rem; /* Runda hörn kort */
     text-align: center; /* Centrerad text */
     transition: background-color 0.3s; /* Glidande övergång för hover-effekt */
 }
 
 .nav-link:hover {
     background-color: var(--button-hover-blue); /* Mörkblå bakgrund vid hover */
-    color: var(--custom-cream); /* Vit text vid hover */
+    color: var(--custom-cream); /* Vit text hover */
 }
 
 .input-group .btn-outline-secondary {
-    border-color: #ced4da; /* Match Bootstrap's default input border color */
+    border-color: #ced4da; /* Matchar Bootstraps default border color */
     background: transparent;
 }
 
