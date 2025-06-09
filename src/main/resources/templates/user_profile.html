@@ -32,7 +32,6 @@
                 </div>
             </div>
 
-
             <div class="col-auto d-flex align-items-center">
                 <form th:action="@{/cart}" method="get" class="me-2">
                     <button type="submit" class="btn btn-outline-secondary">
@@ -46,8 +45,8 @@
                     </button>
                 </form>
             </div>
-
         </div>
+
         <div class="row mt-3">
             <div class="col">
                 <ul class="nav justify-content-center">
@@ -69,36 +68,178 @@
                 </ul>
             </div>
         </div>
-
     </header>
 </div>
 
+<div class="container">
+    <!-- User Profile Section -->
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h2><i class="bi bi-person-fill"></i> Din Profil</h2>
+                </div>
+                <div class="card-body">
+                    <table class="table table-borderless">
+                        <tr>
+                            <th>Användarnamn:</th>
+                            <td th:text="${userProfile != null ? userProfile.username : 'Carro'}">Carro</td>
+                        </tr>
+                        <tr>
+                            <th>E-post:</th>
+                            <td th:text="${userProfile != null ? userProfile.email : 'carolina.correia363@hotmail.com'}">carolina.correia363@hotmail.com</td>
+                        </tr>
+                        <tr>
+                            <th>Medlem sedan:</th>
+                            <td>Oktober 2023</td>
+                        </tr>
+                        <tr>
+                            <th>Totala köp:</th>
+                            <td>5 böcker</td>
+                        </tr>
+                    </table>
+                    <button class="btn btn-primary btn-sm">Redigera profil</button>
+                </div>
+            </div>
+        </div>
 
-    <div class="container">
-        <h1>Din Profil <i class="bi bi-person-fill"></i></h1>
-        <table>
-            <tr>
-                <th>Username</th>
-                <td th:text="${userProfile.username}">Username</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td th:text="${userProfile.email}">Email</td>
-            </tr>
-            <!-- Add moreS fields as needed -->
-        </table>
+        <!-- Quick Stats -->
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3><i class="bi bi-graph-up"></i> Statistik</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div class="col-4">
+                            <h4 class="text-primary">5</h4>
+                            <small>Köpta böcker</small>
+                        </div>
+                        <div class="col-4">
+                            <h4 class="text-success">2</h4>
+                            <small>Recensioner</small>
+                        </div>
+                        <div class="col-4">
+                            <h4 class="text-warning">2</h4>
+                            <small>Digitala lån</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
+    <!-- Purchase History Section -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h3><i class="bi bi-clock-history"></i> Tidigare köp</h3>
+                    <span class="badge bg-primary">3 beställningar</span>
+                </div>
+                <div class="card-body">
+                    <!-- Recent Order 1 -->
+                    <div class="border rounded p-3 mb-3">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h5 class="mb-1">Beställning #BB-2024-001</h5>
+                                <p class="text-muted mb-2"><i class="bi bi-calendar3"></i> 15 maj 2024</p>
+                                <div class="ms-3">
+                                    <p class="mb-1"><strong>Pippi Långstrump (Signerad förstautgåva)</strong> - Astrid Lindgren</p>
+                                    <p class="mb-1"><strong>Sagan om ringen - Härskarringen</strong> - J.R.R. Tolkien</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-end">
+                                <h5 class="text-success">2,215 kr</h5>
+                                <span class="badge bg-success">Levererad</span>
+                                <br><small class="text-muted">2 böcker</small>
+                            </div>
+                        </div>
+                    </div>
 
-<footer class="text-center py-4 mt-4 fixed-bottom">
+                    <!-- Recent Order 2 -->
+                    <div class="border rounded p-3 mb-3">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h5 class="mb-1">Beställning #BB-2024-002</h5>
+                                <p class="text-muted mb-2"><i class="bi bi-calendar3"></i> 8 april 2024</p>
+                                <div class="ms-3">
+                                    <p class="mb-1"><strong>Emil i Lönneberga (Interaktiv utgåva)</strong> - Astrid Lindgren</p>
+                                    <p class="mb-1"><strong>Millennium: Män som hatar kvinnor</strong> - Stieg Larsson</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-end">
+                                <h5 class="text-success">845 kr</h5>
+                                <span class="badge bg-success">Levererad</span>
+                                <br><small class="text-muted">2 böcker</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Order 3 -->
+                    <div class="border rounded p-3 mb-3">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h5 class="mb-1">Beställning #BB-2023-045</h5>
+                                <p class="text-muted mb-2"><i class="bi bi-calendar3"></i> 22 december 2023</p>
+                                <div class="ms-3">
+                                    <p class="mb-1"><strong>Pippi Långstrump (Signerad förstautgåva)</strong> - Astrid Lindgren <span class="text-muted">(Julklapp)</span></p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-end">
+                                <h5 class="text-success">1,325 kr</h5>
+                                <span class="badge bg-success">Levererad</span>
+                                <br><small class="text-muted">1 bok</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Digital Loans Section -->
+                    <div class="mt-4">
+                        <h4><i class="bi bi-download"></i> Digitala lån</h4>
+                        <div class="border rounded p-3 mb-2 bg-light">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p class="mb-1"><strong>Sagan om ringen - Härskarringen</strong> - J.R.R. Tolkien</p>
+                                    <small class="text-muted">Lånad: 10 maj 2024 | Utgick: 11 maj 2024</small>
+                                </div>
+                                <div class="col-md-4 text-end">
+                                    <span class="badge bg-secondary">Utgången</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="border rounded p-3 mb-2 bg-light">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <p class="mb-1"><strong>Emil i Lönneberga (Interaktiv utgåva)</strong> - Astrid Lindgren</p>
+                                    <small class="text-muted">Lånad: 3 mars 2024 | Utgick: 4 mars 2024</small>
+                                </div>
+                                <div class="col-md-4 text-end">
+                                    <span class="badge bg-secondary">Utgången</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="mt-4 text-center">
+                        <button class="btn btn-outline-primary me-2">Visa alla beställningar</button>
+                        <button class="btn btn-outline-secondary">Ladda ner kvitton</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="text-center py-4 mt-4">
     <div class="d-flex justify-content-center align-items-center">
         <a th:href="@{/about}" class="me-3">Om oss</a>
         <a th:href="@{/faq}" class="me-3">Vanliga frågor</a>
         <a th:href="@{/contact}">Kontakta oss</a>
     </div>
 </footer>
-
-
 
 <!-- Bootstrap Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
